@@ -116,9 +116,11 @@
                             Direct `.class` files for manual insertion or Prism/MultiMC Jar-Mod manager.
                         </p>
                     </div>
-                    <button onclick="downloadFile('ArcaneExpansion-b1.7.3-v0.9.4-BETA.zip', 'Mod ZIP')" class="w-full py-2 bg-primary hover:bg-primaryHover text-white text-xs font-semibold rounded transition-colors">
+                    <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01/Arcane.ExpansionBeta1.7.3_01.zip" 
+                       onclick="showToast('Starting ZIP Download...')"
+                       class="w-full py-2 bg-primary hover:bg-primaryHover text-white text-xs font-semibold rounded text-center transition-colors block">
                         Download ZIP
-                    </button>
+                    </a>
                 </div>
 
                 <!-- Full Game JAR Option -->
@@ -132,9 +134,11 @@
                             Ready-to-use game JAR with META-INF pre-cleared. Swap into your instance.
                         </p>
                     </div>
-                    <button onclick="downloadFile('minecraft-b1.7.3-arcane-v0.9.4.jar', 'Pre-Patched JAR')" class="w-full py-2 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold rounded transition-colors">
+                    <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01/Arcane.ExpansionBeta1.7.3_01.jar" 
+                       onclick="showToast('Starting JAR Download...')"
+                       class="w-full py-2 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold rounded text-center transition-colors block">
                         Download JAR
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -187,10 +191,6 @@
     <script>
       function openModal() { document.getElementById('install-modal').classList.remove('hidden'); }
       function closeModal() { document.getElementById('install-modal').classList.add('hidden'); }
-
-      function downloadFile(file, name) {
-        showToast(`Downloading ${name}...`);
-      }
 
       function showToast(msg) {
         const container = document.getElementById('toast-container');
