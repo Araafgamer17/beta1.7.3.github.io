@@ -1,453 +1,227 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcane Expansion - Minecraft Beta 1.7.3 Standalone Mod</title>
+    <title>Arcane Expansion - Beta 1.7.3 Standalone Mod</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             colors: {
-              mc: {
-                dark: '#0c0f17',
-                card: '#161b26',
-                border: '#2a3245',
-                accent: '#9333ea',
-                accentHover: '#7e22ce',
-                gold: '#fbbf24',
-                green: '#22c55e',
-                purpleSlot: '#201830'
-              }
+              bg: '#0a0a0c',
+              surface: '#121216',
+              border: '#22222a',
+              primary: '#a855f7',
+              primaryHover: '#9333ea'
             },
             fontFamily: {
-              pixel: ['"Press Start 2P"', 'monospace'],
-              sans: ['Inter', 'sans-serif']
+              mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+              sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
             }
           }
         }
       }
     </script>
     <style>
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0c0f17;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #2a3245;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #9333ea;
-      }
-
-      /* Minecraft pixelated texture rendering */
-      .mc-pixelated {
-        image-rendering: pixelated;
-        image-rendering: crisp-edges;
-      }
-
-      /* Animated Glowing Border */
-      @keyframes pulseGlow {
-        0%, 100% { border-color: rgba(147, 51, 234, 0.4); box-shadow: 0 0 15px rgba(147, 51, 234, 0.2); }
-        50% { border-color: rgba(168, 85, 247, 0.8); box-shadow: 0 0 25px rgba(168, 85, 247, 0.4); }
-      }
-      .glow-box {
-        animation: pulseGlow 4s infinite ease-in-out;
-      }
-
-      /* Item Slot Hover Effect */
       .mc-slot {
-        background: #8b8b8b;
-        border: 2px solid;
-        border-color: #373737 #ffffff #ffffff #373737;
-        box-shadow: inset 2px 2px 0px #000000;
+        background: #181820;
+        border: 1px solid #2e2e3a;
       }
-      .mc-slot-dark {
-        background: #1e1e24;
-        border: 2px solid;
-        border-color: #0d0d11 #3a3a4c #3a3a4c #0d0d11;
-      }
-      .mc-slot-dark:hover {
-        background: #2d2d38;
-      }
-
-      /* Retro Minecraft Tooltip Style */
       .mc-tooltip {
-        background-color: rgba(16, 0, 16, 0.94);
-        border: 2px solid #280068;
-        box-shadow: 0 0 0 2px #100010, 0 4px 10px rgba(0, 0, 0, 0.8);
-        border-radius: 3px;
+        background: #000000;
+        border: 1px solid #a855f7;
       }
     </style>
 </head>
-<body class="bg-mc-dark text-gray-200 font-sans min-h-screen flex flex-col selection:bg-purple-600 selection:text-white">
+<body class="bg-bg text-gray-300 font-sans antialiased min-h-screen flex flex-col selection:bg-purple-900 selection:text-white">
 
-    <!-- Toast Notification Container -->
-    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- Navigation Header -->
-    <nav class="bg-mc-card/80 backdrop-blur-md border-b border-mc-border sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Minimal Header -->
+    <header class="border-b border-border bg-surface/50 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-indigo-800 rounded-lg flex items-center justify-center border border-purple-400/30 shadow-lg shadow-purple-900/30">
-                    <i class="fa-solid fa-wand-magic-sparkles text-xl text-purple-200"></i>
-                </div>
-                <div>
-                    <div class="flex items-center gap-2">
-                        <span class="font-pixel text-sm sm:text-base text-purple-300">Arcane Expansion</span>
-                        <span class="text-[10px] bg-purple-900/60 text-purple-300 font-bold px-2 py-0.5 rounded border border-purple-500/30">v0.9.4-BETA</span>
-                    </div>
-                    <span class="text-xs text-gray-400 block sm:inline">Minecraft Beta 1.7.3 &bull; <span class="text-amber-400 font-medium">Standalone (No ModLoader)</span></span>
-                </div>
+                <span class="font-bold text-white tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-wand-magic-sparkles text-primary"></i> Arcane Expansion
+                </span>
+                <span class="text-[10px] font-mono bg-purple-950 text-purple-300 border border-purple-800/40 px-2 py-0.5 rounded">b1.7.3-v0.9.4-BETA</span>
             </div>
 
-            <div class="hidden md:flex items-center gap-6 font-medium text-sm text-gray-300">
-                <a href="#downloads" class="hover:text-purple-400 transition-colors"><i class="fa-solid fa-download mr-1.5 text-xs"></i>Downloads</a>
-                <a href="#recipes" class="hover:text-purple-400 transition-colors"><i class="fa-solid fa-book-open mr-1.5 text-xs"></i>Recipe Book</a>
-                <a href="#compatibility" class="hover:text-purple-400 transition-colors"><i class="fa-solid fa-microchip mr-1.5 text-xs"></i>Compatibility</a>
-                <a href="#install" onclick="openModal()" class="hover:text-purple-400 transition-colors cursor-pointer"><i class="fa-solid fa-circle-info mr-1.5 text-xs"></i>Install Guide</a>
-            </div>
-
-            <a href="#downloads" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold font-pixel rounded shadow-lg shadow-purple-900/40 transition-all transform active:scale-95">
-                GET BETA
-            </a>
+            <nav class="flex items-center gap-6 text-xs font-medium">
+                <a href="#downloads" class="hover:text-white transition-colors">Downloads</a>
+                <a href="#recipes" class="hover:text-white transition-colors">Recipes</a>
+                <a href="#specs" class="hover:text-white transition-colors">Specs</a>
+                <button onclick="openModal()" class="text-primary hover:text-purple-400 font-mono text-[11px] border border-primary/30 px-2.5 py-1 rounded bg-purple-950/20">
+                    Install Guide
+                </button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Main Content -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-12 space-y-16">
 
-        <!-- Hero Section -->
-        <section class="relative rounded-2xl overflow-hidden bg-gradient-to-r from-purple-950/60 via-mc-card to-slate-900 border border-mc-border p-8 md:p-12 glow-box">
-            <div class="max-w-3xl space-y-6 relative z-10">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/40 border border-purple-500/30 text-purple-300 text-xs font-medium">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    No ModLoader Needed &bull; Direct JAR Modification
-                </div>
-                <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
-                    Unleash Forgotten Magic in <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-300">Minecraft Beta 1.7.3</span>
-                </h1>
-                <p class="text-gray-300 text-base md:text-lg leading-relaxed">
-                    Arcane Expansion brings ancient alchemy, wands, pedestals, and magic tables back to the legendary golden era of Minecraft Beta 1.7.3. Designed as a lightweight, high-performance standalone mod with <strong>zero external loader dependencies</strong>.
-                </p>
-
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="#downloads" class="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-pixel text-xs rounded-lg shadow-xl shadow-purple-900/50 flex items-center gap-2 transition-all hover:translate-y-[-2px]">
-                        <i class="fa-solid fa-download"></i> DOWNLOAD BETA
-                    </a>
-                    <button onclick="openModal()" class="px-6 py-3 bg-mc-card hover:bg-gray-800 text-gray-200 border border-mc-border font-pixel text-xs rounded-lg flex items-center gap-2 transition-all">
-                        <i class="fa-solid fa-list-check"></i> INSTALLATION STEPS
-                    </button>
-                </div>
+        <!-- Minimal Hero -->
+        <section class="space-y-4">
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full border border-purple-800/40 bg-purple-950/30 text-purple-300 text-[11px] font-mono">
+                Standalone Jar Mod &bull; Zero ModLoader Dependency
             </div>
-
-            <!-- Decorative Glow Elements -->
-            <div class="absolute -right-16 -bottom-16 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute right-1/4 top-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
-        </section>
-
-        <!-- Requirements & System Matrix -->
-        <section id="compatibility" class="space-y-6">
-            <div class="border-b border-mc-border pb-4 flex items-center justify-between">
-                <div>
-                    <h2 class="text-xl font-bold text-white font-pixel flex items-center gap-2">
-                        <i class="fa-solid fa-sliders text-purple-400"></i> Compatibility & Specs
-                    </h2>
-                    <p class="text-xs text-gray-400 mt-1">System requirements and execution status for Beta 1.7.3</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <!-- ModLoader Requirement -->
-                <div class="bg-mc-card border border-mc-border rounded-xl p-5 flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-lg shrink-0">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs font-bold text-gray-400 uppercase tracking-wider">ModLoader</div>
-                        <div class="text-base font-bold text-emerald-400 mt-0.5">NOT Required</div>
-                        <div class="text-xs text-gray-400 mt-1">Direct class injection into target jar file</div>
-                    </div>
-                </div>
-
-                <!-- Game Version -->
-                <div class="bg-mc-card border border-mc-border rounded-xl p-5 flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-purple-950/60 border border-purple-500/30 flex items-center justify-center text-purple-400 text-lg shrink-0">
-                        <i class="fa-solid fa-cube"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs font-bold text-gray-400 uppercase tracking-wider">Target Version</div>
-                        <div class="text-base font-bold text-purple-300 mt-0.5">Minecraft Beta 1.7.3</div>
-                        <div class="text-xs text-gray-400 mt-1">Exact class mappings for b1.7.3 vanilla</div>
-                    </div>
-                </div>
-
-                <!-- Java Version -->
-                <div class="bg-mc-card border border-mc-border rounded-xl p-5 flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-amber-950/60 border border-amber-500/30 flex items-center justify-center text-amber-400 text-lg shrink-0">
-                        <i class="fa-brands fa-java"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs font-bold text-gray-400 uppercase tracking-wider">Java Runtime</div>
-                        <div class="text-base font-bold text-amber-300 mt-0.5">Java 8 - Java 21</div>
-                        <div class="text-xs text-gray-400 mt-1">Fully tested on modern launcher runtimes</div>
-                    </div>
-                </div>
-
-                <!-- Multiplayer Status -->
-                <div class="bg-mc-card border border-mc-border rounded-xl p-5 flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0">
-                        <i class="fa-solid fa-users"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs font-bold text-gray-400 uppercase tracking-wider">Game Modes</div>
-                        <div class="flex items-center gap-2 mt-0.5">
-                            <span class="text-xs font-bold bg-emerald-900/60 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30">SSP Ready</span>
-                            <span class="text-xs font-bold bg-amber-900/60 text-amber-300 px-2 py-0.5 rounded border border-amber-500/30">SMP Soon</span>
-                        </div>
-                        <div class="text-xs text-gray-400 mt-1">Singleplayer supported; Server support in dev</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Prominent Download Hub -->
-        <section id="downloads" class="space-y-6">
-            <div class="border-b border-mc-border pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div>
-                    <h2 class="text-xl font-bold text-white font-pixel flex items-center gap-2">
-                        <i class="fa-solid fa-download text-purple-400"></i> Download Early Access Beta
-                    </h2>
-                    <p class="text-xs text-gray-400 mt-1">Get the latest early access build for Beta 1.7.3</p>
-                </div>
-                <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 rounded-full font-medium w-fit">
-                    <i class="fa-solid fa-flask mr-1"></i> Beta Release Build
-                </span>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Package 1: Standalone ZIP Package -->
-                <div class="bg-mc-card border border-purple-500/30 hover:border-purple-500/60 rounded-2xl p-6 flex flex-col justify-between transition-all shadow-xl hover:shadow-purple-950/20">
-                    <div class="space-y-4">
-                        <div class="flex items-start justify-between">
-                            <div>
-                                <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Recommended Method</span>
-                                <h3 class="text-lg font-bold text-white font-pixel mt-1">Mod ZIP Package</h3>
-                            </div>
-                            <span class="px-2.5 py-1 bg-purple-900/60 text-purple-300 border border-purple-500/40 text-xs font-mono rounded">v0.9.4-BETA</span>
-                        </div>
-                        <p class="text-xs text-gray-300 leading-relaxed">
-                            Contains raw modified `.class` files ready for manual insertion into `minecraft.jar` or Prism/MultiMC Jar-Mod manager.
-                        </p>
-                        <div class="flex items-center gap-4 text-xs text-gray-400 pt-2 border-t border-mc-border/50">
-                            <span><i class="fa-solid fa-file-zipper text-purple-400 mr-1"></i> 1.24 MB</span>
-                            <span><i class="fa-solid fa-calendar text-purple-400 mr-1"></i> Early Beta</span>
-                            <span class="text-emerald-400 font-medium"><i class="fa-solid fa-shield-halved mr-1"></i> No Loader</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-                        <button onclick="downloadFile('ArcaneExpansion-b1.7.3-v0.9.4-BETA.zip', 'Mod ZIP Package')" class="flex-1 py-3 bg-purple-600 hover:bg-purple-500 text-white font-pixel text-xs rounded-lg transition-all shadow-lg shadow-purple-900/40 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-download"></i> DOWNLOAD ZIP
-                        </button>
-                        <button onclick="openModal('zip')" class="px-4 py-3 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-medium rounded-lg border border-mc-border transition-colors">
-                            Guide
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Package 2: Pre-Patched Minecraft.jar -->
-                <div class="bg-mc-card border border-mc-border hover:border-purple-500/40 rounded-2xl p-6 flex flex-col justify-between transition-all">
-                    <div class="space-y-4">
-                        <div class="flex items-start justify-between">
-                            <div>
-                                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Instant Setup</span>
-                                <h3 class="text-lg font-bold text-white font-pixel mt-1">Pre-Patched Game JAR</h3>
-                            </div>
-                            <span class="px-2.5 py-1 bg-emerald-900/60 text-emerald-300 border border-emerald-500/40 text-xs font-mono rounded">minecraft.jar</span>
-                        </div>
-                        <p class="text-xs text-gray-300 leading-relaxed">
-                            Pre-compiled `minecraft.jar` with Arcane Expansion already injected and `META-INF` cleared. Swap directly into your instance folder.
-                        </p>
-                        <div class="flex items-center gap-4 text-xs text-gray-400 pt-2 border-t border-mc-border/50">
-                            <span><i class="fa-solid fa-box text-emerald-400 mr-1"></i> 4.85 MB</span>
-                            <span><i class="fa-solid fa-bolt text-emerald-400 mr-1"></i> Ready to Play</span>
-                            <span class="text-amber-400 font-medium"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Beta Build</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-                        <button onclick="downloadFile('minecraft-b1.7.3-arcane-v0.9.4.jar', 'Pre-Patched JAR')" class="flex-1 py-3 bg-emerald-700 hover:bg-emerald-600 text-white font-pixel text-xs rounded-lg transition-all shadow-lg shadow-emerald-950/40 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-file-export"></i> DOWNLOAD JAR
-                        </button>
-                        <button onclick="openModal('jar')" class="px-4 py-3 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-medium rounded-lg border border-mc-border transition-colors">
-                            Guide
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Multiplayer Notice Card -->
-            <div class="bg-gradient-to-r from-blue-950/40 via-mc-card to-slate-900 border border-blue-500/30 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-blue-900/50 border border-blue-400/30 flex items-center justify-center text-blue-300 text-2xl shrink-0">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <h4 class="font-bold text-white">SMP Server Compatibility</h4>
-                            <span class="text-[10px] font-pixel bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded">COMING SOON</span>
-                        </div>
-                        <p class="text-xs text-gray-400 mt-0.5">Multiplayer server package (minecraft_server.jar mod) is currently in development for Beta release 1.0.</p>
-                    </div>
-                </div>
-                <button onclick="showToast('SMP Server support is expected in Beta v1.0 release!', 'info')" class="px-4 py-2 bg-blue-900/50 hover:bg-blue-800/60 text-blue-200 border border-blue-500/40 rounded text-xs font-medium shrink-0 transition-colors">
-                    Notify Me
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Ancient Magic for Minecraft Beta 1.7.3
+            </h1>
+            <p class="text-gray-400 text-sm max-w-2xl leading-relaxed">
+                Lightweight, high-performance standalone expansion adding magic tables, pedestals, and wands directly into vanilla Minecraft Beta 1.7.3.
+            </p>
+            <div class="flex items-center gap-3 pt-2">
+                <a href="#downloads" class="px-4 py-2 bg-primary hover:bg-primaryHover text-white text-xs font-semibold rounded transition-all">
+                    Download Beta
+                </a>
+                <button onclick="openModal()" class="px-4 py-2 bg-surface hover:bg-gray-800 text-gray-300 border border-border text-xs rounded transition-all">
+                    Installation Steps
                 </button>
             </div>
         </section>
 
-        <!-- Interactive Crafting Recipe Book -->
-        <section id="recipes" class="space-y-6">
-            <div class="border-b border-mc-border pb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <h2 class="text-xl font-bold text-white font-pixel flex items-center gap-2">
-                        <i class="fa-solid fa-book-open text-purple-400"></i> Arcane Recipe Codex
-                    </h2>
-                    <p class="text-xs text-gray-400 mt-1">Authentic 3x3 Minecraft crafting recipes extracted directly from game source code</p>
+        <!-- Minimal Specs Row -->
+        <section id="specs" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-3 bg-surface border border-border rounded">
+                <div class="text-[10px] text-gray-500 font-mono uppercase">ModLoader</div>
+                <div class="text-xs font-bold text-emerald-400 mt-1">Not Required</div>
+            </div>
+            <div class="p-3 bg-surface border border-border rounded">
+                <div class="text-[10px] text-gray-500 font-mono uppercase">Version</div>
+                <div class="text-xs font-bold text-white mt-1">Beta 1.7.3</div>
+            </div>
+            <div class="p-3 bg-surface border border-border rounded">
+                <div class="text-[10px] text-gray-500 font-mono uppercase">Java</div>
+                <div class="text-xs font-bold text-white mt-1">Java 8 – 21</div>
+            </div>
+            <div class="p-3 bg-surface border border-border rounded">
+                <div class="text-[10px] text-gray-500 font-mono uppercase">Multiplayer</div>
+                <div class="text-xs font-bold text-amber-400 mt-1">Singleplayer Only (SMP Soon)</div>
+            </div>
+        </section>
+
+        <!-- Prominent Minimal Downloads -->
+        <section id="downloads" class="space-y-4">
+            <h2 class="text-lg font-bold text-white tracking-tight flex items-center justify-between">
+                <span>Downloads</span>
+                <span class="text-xs font-mono font-normal text-amber-400 bg-amber-950/30 border border-amber-800/30 px-2 py-0.5 rounded">Early Access</span>
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- ZIP Option -->
+                <div class="p-5 bg-surface border border-border rounded-lg space-y-3 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-bold text-white">Mod ZIP Package</h3>
+                            <span class="text-[10px] font-mono text-purple-400">1.24 MB</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-1">
+                            Direct `.class` files for manual insertion or Prism/MultiMC Jar-Mod manager.
+                        </p>
+                    </div>
+                    <button onclick="downloadFile('ArcaneExpansion-b1.7.3-v0.9.4-BETA.zip', 'Mod ZIP')" class="w-full py-2 bg-primary hover:bg-primaryHover text-white text-xs font-semibold rounded transition-colors">
+                        Download ZIP
+                    </button>
                 </div>
 
-                <!-- Recipe Search Bar -->
-                <div class="relative w-full md:w-72">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-                    <input type="text" id="recipe-search" oninput="filterRecipes()" placeholder="Search recipes or items..." class="w-full bg-mc-card border border-mc-border rounded-lg pl-9 pr-4 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors">
+                <!-- Full Game JAR Option -->
+                <div class="p-5 bg-surface border border-border rounded-lg space-y-3 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-bold text-white">Pre-Patched minecraft.jar</h3>
+                            <span class="text-[10px] font-mono text-emerald-400">4.85 MB</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-1">
+                            Ready-to-use game JAR with META-INF pre-cleared. Swap into your instance.
+                        </p>
+                    </div>
+                    <button onclick="downloadFile('minecraft-b1.7.3-arcane-v0.9.4.jar', 'Pre-Patched JAR')" class="w-full py-2 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold rounded transition-colors">
+                        Download JAR
+                    </button>
                 </div>
             </div>
+        </section>
 
-            <!-- Recipe Categories Tabs -->
-            <div class="flex flex-wrap gap-2 border-b border-mc-border/60 pb-3" id="category-tabs">
-                <button onclick="setCategory('all')" class="cat-btn active px-3 py-1.5 rounded-lg text-xs font-medium bg-purple-600 text-white transition-all">All Recipes</button>
-                <button onclick="setCategory('magic')" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-mc-card border border-mc-border text-gray-300 hover:text-white transition-all">Magic Blocks</button>
-                <button onclick="setCategory('items')" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-mc-card border border-mc-border text-gray-300 hover:text-white transition-all">Items & Books</button>
-                <button onclick="setCategory('special')" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-mc-card border border-mc-border text-gray-300 hover:text-white transition-all">Magic Crafting Table</button>
+        <!-- Recipe Codex Section -->
+        <section id="recipes" class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border pb-3">
+                <h2 class="text-lg font-bold text-white tracking-tight">Recipe Codex</h2>
+                <input type="text" id="recipe-search" oninput="renderRecipes()" placeholder="Search recipes..." class="bg-surface border border-border rounded px-3 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-primary w-full sm:w-64">
             </div>
 
-            <!-- Recipe Grid Display -->
-            <div id="recipe-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Recipes will be injected dynamically via JavaScript -->
+            <!-- Categories -->
+            <div class="flex gap-2 text-xs font-mono">
+                <button onclick="setCategory('all')" class="cat-btn bg-primary text-white px-2.5 py-1 rounded">All</button>
+                <button onclick="setCategory('magic')" class="cat-btn bg-surface border border-border text-gray-400 hover:text-white px-2.5 py-1 rounded">Blocks</button>
+                <button onclick="setCategory('items')" class="cat-btn bg-surface border border-border text-gray-400 hover:text-white px-2.5 py-1 rounded">Items</button>
+                <button onclick="setCategory('special')" class="cat-btn bg-surface border border-border text-gray-400 hover:text-white px-2.5 py-1 rounded">Magic Table Grid</button>
             </div>
+
+            <!-- Grid Container -->
+            <div id="recipe-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
         </section>
 
     </main>
 
     <!-- Installation Modal -->
     <div id="install-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-mc-card border border-mc-border rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
-            
-            <!-- Modal Header -->
-            <div class="p-6 border-b border-mc-border flex items-center justify-between bg-mc-dark/50">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded bg-purple-900/60 border border-purple-500/40 flex items-center justify-center text-purple-300">
-                        <i class="fa-solid fa-gears"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-pixel text-sm text-white">Installation Guide</h3>
-                        <p class="text-xs text-gray-400">Standalone Beta 1.7.3 Injection (No ModLoader Required)</p>
-                    </div>
-                </div>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-lg transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+        <div class="bg-surface border border-border rounded-lg max-w-lg w-full p-6 space-y-4">
+            <div class="flex items-center justify-between border-b border-border pb-3">
+                <h3 class="text-sm font-bold text-white">Standalone Installation Guide</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
-            <!-- Modal Content Steps -->
-            <div class="p-6 overflow-y-auto space-y-6 text-xs text-gray-300 leading-relaxed">
-
-                <div class="p-3 bg-amber-950/30 border border-amber-500/30 rounded-lg flex items-start gap-3">
-                    <i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm mt-0.5"></i>
-                    <div>
-                        <span class="font-bold text-amber-300 block">Critical Requirement</span>
-                        You MUST delete the <code class="bg-black/50 px-1 py-0.5 rounded text-amber-200 font-mono">META-INF</code> folder inside <code class="bg-black/50 px-1 py-0.5 rounded text-amber-200 font-mono">minecraft.jar</code>, or the game will black screen upon startup!
-                    </div>
+            <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-mono">
+                <div class="p-2.5 bg-amber-950/40 border border-amber-800/40 rounded text-amber-300 text-[11px]">
+                    <strong>IMPORTANT:</strong> Delete <code class="bg-black/50 px-1 py-0.5 rounded text-white">META-INF</code> inside <code class="bg-black/50 px-1 py-0.5 rounded text-white">minecraft.jar</code> or the game will crash!
                 </div>
 
-                <!-- Method A: Direct Jar Injection -->
-                <div class="space-y-3">
-                    <h4 class="font-bold text-purple-300 text-sm flex items-center gap-2">
-                        <span class="w-5 h-5 rounded-full bg-purple-900 text-purple-200 flex items-center justify-center text-[10px]">A</span>
-                        Vanilla / Default Launcher Method
-                    </h4>
-                    <ol class="list-decimal list-inside space-y-2 text-gray-300 pl-2">
-                        <li>Press <code class="bg-mc-dark px-1.5 py-0.5 rounded text-purple-300 border border-mc-border">Win + R</code>, type <code class="bg-mc-dark px-1.5 py-0.5 rounded text-purple-300 border border-mc-border">%appdata%\.minecraft\bin</code> and hit Enter.</li>
-                        <li>Open <code class="bg-mc-dark px-1 py-0.5 rounded text-white">minecraft.jar</code> using <strong>WinRAR</strong> or <strong>7-Zip</strong>.</li>
-                        <li>Delete the folder named <strong class="text-red-400">META-INF</strong> inside the JAR.</li>
-                        <li>Extract all <code class="bg-mc-dark px-1 py-0.5 rounded text-purple-300">.class</code> files from the downloaded Arcane Expansion ZIP directly into <code class="bg-mc-dark px-1 py-0.5 rounded text-white">minecraft.jar</code>.</li>
-                        <li>Confirm overwrite when prompted, close WinRAR/7-Zip, and launch Minecraft Beta 1.7.3!</li>
-                    </ol>
+                <div>
+                    <span class="text-white font-bold block mb-1">Method 1: Manual Injection</span>
+                    1. Open <code class="bg-black px-1 rounded text-purple-300">%appdata%\.minecraft\bin\minecraft.jar</code> in 7-Zip or WinRAR.<br>
+                    2. Delete <strong class="text-red-400">META-INF</strong> folder.<br>
+                    3. Copy all `.class` files from mod ZIP into `minecraft.jar`.
                 </div>
 
-                <hr class="border-mc-border">
-
-                <!-- Method B: Prism / MultiMC -->
-                <div class="space-y-3">
-                    <h4 class="font-bold text-purple-300 text-sm flex items-center gap-2">
-                        <span class="w-5 h-5 rounded-full bg-purple-900 text-purple-200 flex items-center justify-center text-[10px]">B</span>
-                        Prism / MultiMC Launcher Method
-                    </h4>
-                    <ol class="list-decimal list-inside space-y-2 text-gray-300 pl-2">
-                        <li>Right-click your Minecraft Beta 1.7.3 instance in Prism/MultiMC and click <strong>Edit Instance</strong>.</li>
-                        <li>Select the <strong>Version</strong> tab on the left sidebar.</li>
-                        <li>Click <strong>Add to minecraft.jar</strong> on the right action bar.</li>
-                        <li>Select the downloaded <code class="bg-mc-dark px-1 py-0.5 rounded text-purple-300">ArcaneExpansion-b1.7.3-v0.9.4-BETA.zip</code> file.</li>
-                        <li>Launch the instance! Prism automatically strips META-INF for you.</li>
-                    </ol>
+                <div>
+                    <span class="text-white font-bold block mb-1">Method 2: Prism / MultiMC</span>
+                    1. Edit Instance &rarr; Version Tab.<br>
+                    2. Click "Add to minecraft.jar" &rarr; Choose downloaded ZIP package.
                 </div>
             </div>
 
-            <!-- Modal Footer -->
-            <div class="p-4 border-t border-mc-border bg-mc-dark/50 flex justify-end">
-                <button onclick="closeModal()" class="px-5 py-2 bg-purple-600 hover:bg-purple-500 text-white font-pixel text-xs rounded-lg transition-colors">
-                    GOT IT
+            <div class="flex justify-end pt-2">
+                <button onclick="closeModal()" class="px-4 py-1.5 bg-primary hover:bg-primaryHover text-white text-xs font-semibold rounded">
+                    Close
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-mc-card border-t border-mc-border py-8 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="text-xs text-gray-400">
-                Arcane Expansion Mod for Minecraft Beta 1.7.3 &bull; Early Access Beta
-            </div>
-            <div class="text-xs text-gray-500">
-                Not affiliated with Mojang Studios or Microsoft.
-            </div>
+    <!-- Minimal Footer -->
+    <footer class="border-t border-border py-6 mt-auto bg-surface/30">
+        <div class="max-w-5xl mx-auto px-4 text-center text-xs text-gray-500">
+            Arcane Expansion Beta 1.7.3 &bull; Unofficial Minecraft Mod
         </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- Logic -->
     <script>
-      // ----------------------------------------------------
-      // Extract Code Recipes into Web Format
-      // ----------------------------------------------------
       const recipesData = [
         {
           id: 'magic_table',
           name: 'Magic Table',
           category: 'magic',
           type: '3x3',
-          output: { name: 'Magic Table', count: 1, icon: 'fa-cube', color: 'text-purple-400' },
+          output: { name: 'Magic Table', icon: 'fa-cube', color: 'text-purple-400' },
           grid: [
             null, { name: 'Purple Cloth', icon: 'fa-shirt', color: 'text-purple-400' }, null,
             { name: 'Crystal', icon: 'fa-gem', color: 'text-cyan-300' }, { name: 'Cobblestone', icon: 'fa-cubes', color: 'text-gray-400' }, { name: 'Crystal', icon: 'fa-gem', color: 'text-cyan-300' },
@@ -459,7 +233,7 @@
           name: 'Enchanting Table',
           category: 'magic',
           type: '3x3',
-          output: { name: 'Enchanting Table', count: 1, icon: 'fa-box', color: 'text-indigo-400' },
+          output: { name: 'Enchanting Table', icon: 'fa-box', color: 'text-indigo-400' },
           grid: [
             null, { name: 'Book', icon: 'fa-book', color: 'text-amber-600' }, null,
             { name: 'Diamond', icon: 'fa-gem', color: 'text-cyan-400' }, { name: 'Obsidian', icon: 'fa-square', color: 'text-purple-950' }, { name: 'Diamond', icon: 'fa-gem', color: 'text-cyan-400' },
@@ -471,7 +245,7 @@
           name: 'Arcane Wand',
           category: 'items',
           type: '3x3',
-          output: { name: 'Arcane Wand', count: 1, icon: 'fa-wand-magic', color: 'text-amber-400' },
+          output: { name: 'Arcane Wand', icon: 'fa-wand-magic', color: 'text-amber-400' },
           grid: [
             null, null, { name: 'Crystal', icon: 'fa-gem', color: 'text-cyan-300' },
             null, { name: 'Stick', icon: 'fa-lines-leaning', color: 'text-amber-700' }, null,
@@ -483,7 +257,7 @@
           name: 'Master Crystal',
           category: 'items',
           type: '3x3',
-          output: { name: 'Master Crystal', count: 1, icon: 'fa-gem', color: 'text-pink-400' },
+          output: { name: 'Master Crystal', icon: 'fa-gem', color: 'text-pink-400' },
           grid: [
             null, { name: 'Crystal', icon: 'fa-gem', color: 'text-cyan-300' }, null,
             { name: 'Crystal', icon: 'fa-gem', color: 'text-cyan-300' }, { name: 'Diamond', icon: 'fa-gem', color: 'text-cyan-400' }, { name: 'Crystal', icon: 'fa-gem', color: 'text-cyan-300' },
@@ -492,10 +266,10 @@
         },
         {
           id: 'book_quill',
-          name: 'Book and Quill',
+          name: 'Book & Quill',
           category: 'items',
           type: '3x3',
-          output: { name: 'Book & Quill', count: 1, icon: 'fa-book-open', color: 'text-amber-500' },
+          output: { name: 'Book & Quill', icon: 'fa-book-open', color: 'text-amber-500' },
           grid: [
             { name: 'Feather', icon: 'fa-feather', color: 'text-gray-200' }, null, null,
             { name: 'Book', icon: 'fa-book', color: 'text-amber-600' }, null, null,
@@ -503,154 +277,80 @@
           ]
         },
         {
-          id: 'bottle_enchanting',
-          name: 'Bottle o\' Enchanting',
-          category: 'items',
-          type: '3x3',
-          output: { name: 'Bottle o\' Enchanting', count: 1, icon: 'fa-flask', color: 'text-emerald-400' },
-          grid: [
-            null, { name: 'Lapis Lazuli', icon: 'fa-cookie', color: 'text-blue-500' }, null,
-            null, { name: 'Glass', icon: 'fa-border-all', color: 'text-cyan-200' }, null,
-            null, null, null
-          ]
-        },
-        {
-          id: 'enchanted_book',
-          name: 'Enchanted Book',
-          category: 'items',
-          type: '3x3',
-          output: { name: 'Enchanted Book', count: 1, icon: 'fa-book-bookmark', color: 'text-purple-400' },
-          grid: [
-            { name: 'Book', icon: 'fa-book', color: 'text-amber-600' }, null, null,
-            { name: 'Lapis Lazuli', icon: 'fa-cookie', color: 'text-blue-500' }, null, null,
-            null, null, null
-          ]
-        },
-        {
           id: 'pedestal',
           name: 'Pedestal',
           category: 'special',
           type: 'magic_table_grid',
-          notes: 'Special Magic Crafting Table Recipe',
-          output: { name: 'Pedestal', count: 1, icon: 'fa-monument', color: 'text-indigo-300' },
+          output: { name: 'Pedestal', icon: 'fa-monument', color: 'text-indigo-300' },
           magicGrid: [
-            { pos: 'A', name: 'Cobblestone', icon: 'fa-cubes', color: 'text-gray-400' },
-            { pos: 'W', name: 'Wand / Master Wand', icon: 'fa-wand-magic-sparkles', color: 'text-amber-400' },
-            { pos: 'B', name: 'Cobblestone', icon: 'fa-cubes', color: 'text-gray-400' },
-            { pos: 'C', name: 'Cobblestone Slab', icon: 'fa-layer-group', color: 'text-gray-400' },
-            { pos: 'X', name: 'Crystal', icon: 'fa-gem', color: 'text-cyan-300' },
-            { pos: 'D', name: 'Cobblestone Slab', icon: 'fa-layer-group', color: 'text-gray-400' }
+            { name: 'Cobblestone', icon: 'fa-cubes', color: 'text-gray-400' },
+            { name: 'Wand / Master Wand', icon: 'fa-wand-magic-sparkles', color: 'text-amber-400' },
+            { name: 'Cobblestone', icon: 'fa-cubes', color: 'text-gray-400' },
+            { name: 'Cobblestone Slab', icon: 'fa-layer-group', color: 'text-gray-400' },
+            { name: 'Crystal', icon: 'fa-gem', color: 'text-cyan-300' },
+            { name: 'Cobblestone Slab', icon: 'fa-layer-group', color: 'text-gray-400' }
           ]
         }
       ];
 
       let currentCategory = 'all';
 
-      // Render Recipes
       function renderRecipes() {
         const container = document.getElementById('recipe-container');
-        const searchVal = document.getElementById('recipe-search').value.toLowerCase();
-
+        const search = document.getElementById('recipe-search').value.toLowerCase();
         container.innerHTML = '';
 
         const filtered = recipesData.filter(r => {
-          const matchCat = currentCategory === 'all' || r.category === currentCategory;
-          const matchSearch = r.name.toLowerCase().includes(searchVal) || 
-                              r.output.name.toLowerCase().includes(searchVal) ||
-                              (r.grid && r.grid.some(item => item && item.name.toLowerCase().includes(searchVal)));
-          return matchCat && matchSearch;
+          const catMatch = currentCategory === 'all' || r.category === currentCategory;
+          const searchMatch = r.name.toLowerCase().includes(search) || r.output.name.toLowerCase().includes(search);
+          return catMatch && searchMatch;
         });
-
-        if (filtered.length === 0) {
-          container.innerHTML = `
-            <div class="col-span-full py-12 text-center text-gray-500">
-              <i class="fa-solid fa-ghost text-3xl mb-3 block"></i>
-              <p class="font-pixel text-xs">No arcane recipes match your filter.</p>
-            </div>
-          `;
-          return;
-        }
 
         filtered.forEach(recipe => {
           const card = document.createElement('div');
-          card.className = 'bg-mc-card border border-mc-border rounded-xl p-5 flex flex-col justify-between hover:border-purple-500/40 transition-all';
+          card.className = 'p-4 bg-surface border border-border rounded space-y-3';
 
           if (recipe.type === 'magic_table_grid') {
-            // Render Magic Crafting Table (6 Slots)
             card.innerHTML = `
-              <div>
-                <div class="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 class="font-pixel text-xs text-white">${recipe.name}</h3>
-                    <span class="text-[10px] text-purple-400 font-medium">${recipe.notes}</span>
-                  </div>
-                  <span class="text-[10px] bg-purple-900/60 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded">Special</span>
-                </div>
-
-                <!-- 6-Slot Magic Table Pattern Grid -->
-                <div class="flex items-center justify-center gap-4 py-2">
-                  <div class="grid grid-cols-3 gap-1.5 p-2 bg-mc-dark rounded-lg border border-mc-border">
-                    ${recipe.magicGrid.map(slot => `
-                      <div class="w-10 h-10 mc-slot-dark rounded flex items-center justify-center relative group" title="${slot.name}">
-                        <i class="fa-solid ${slot.icon}${slot.color} text-sm"></i>
-                        <div class="mc-tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 text-[10px] text-purple-200 whitespace-nowrap pointer-events-none hidden group-hover:block z-30 font-pixel">
-                          ${slot.name}
-                        </div>
-                      </div>
-                    `).join('')}
-                  </div>
-
-                  <i class="fa-solid fa-right-long text-purple-400 text-lg"></i>
-
-                  <!-- Output -->
-                  <div class="w-12 h-12 mc-slot rounded-lg flex items-center justify-center relative group bg-purple-950/40 border-purple-500/50">
-                    <i class="fa-solid ${recipe.output.icon} ${recipe.output.color} text-xl"></i>
-                    <div class="mc-tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 text-[10px] text-purple-200 whitespace-nowrap pointer-events-none hidden group-hover:block z-30 font-pixel">
-                      ${recipe.output.name} x${recipe.output.count}
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-white">${recipe.name}</span>
+                <span class="text-[9px] font-mono text-purple-400 bg-purple-950/40 px-1.5 py-0.5 rounded">Magic Table</span>
+              </div>
+              <div class="flex items-center justify-center gap-3">
+                <div class="grid grid-cols-3 gap-1 bg-bg p-1.5 rounded border border-border">
+                  ${recipe.magicGrid.map(s => `
+                    <div class="w-8 h-8 mc-slot rounded flex items-center justify-center text-xs" title="${s.name}">
+                      <i class="fa-solid ${s.icon}${s.color}"></i>
                     </div>
-                  </div>
+                  `).join('')}
+                </div>
+                <i class="fa-solid fa-arrow-right text-gray-600 text-xs"></i>
+                <div class="w-9 h-9 mc-slot rounded border-purple-500/50 flex items-center justify-center text-sm" title="${recipe.output.name}">
+                  <i class="fa-solid ${recipe.output.icon} ${recipe.output.color}"></i>
                 </div>
               </div>
             `;
           } else {
-            // Render Standard 3x3 Minecraft Crafting Grid
             card.innerHTML = `
-              <div>
-                <div class="flex items-center justify-between mb-4">
-                  <h3 class="font-pixel text-xs text-white">${recipe.name}</h3>
-                  <span class="text-[10px] bg-mc-dark text-gray-400 border border-mc-border px-2 py-0.5 rounded">3x3 Grid</span>
-                </div>
-
-                <!-- 3x3 Grid Layout -->
-                <div class="flex items-center justify-center gap-4 py-2">
-                  <div class="grid grid-cols-3 gap-1.5 p-2 bg-mc-dark rounded-lg border border-mc-border">
-                    ${recipe.grid.map(slot => slot ? `
-                      <div class="w-10 h-10 mc-slot-dark rounded flex items-center justify-center relative group">
-                        <i class="fa-solid ${slot.icon}${slot.color} text-sm"></i>
-                        <div class="mc-tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 text-[10px] text-purple-200 whitespace-nowrap pointer-events-none hidden group-hover:block z-30 font-pixel">
-                          ${slot.name}
-                        </div>
-                      </div>
-                    ` : `
-                      <div class="w-10 h-10 bg-mc-dark/40 rounded border border-mc-border/30"></div>
-                    `).join('')}
-                  </div>
-
-                  <i class="fa-solid fa-right-long text-gray-500 text-lg"></i>
-
-                  <!-- Output Slot -->
-                  <div class="w-12 h-12 mc-slot rounded-lg flex items-center justify-center relative group">
-                    <i class="fa-solid ${recipe.output.icon} ${recipe.output.color} text-xl"></i>
-                    <span class="absolute bottom-0.5 right-1 font-pixel text-[9px] text-white drop-shadow">${recipe.output.count}</span>
-                    <div class="mc-tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 text-[10px] text-purple-200 whitespace-nowrap pointer-events-none hidden group-hover:block z-30 font-pixel">
-                      ${recipe.output.name}
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-white">${recipe.name}</span>
+                <span class="text-[9px] font-mono text-gray-500">3x3</span>
+              </div>
+              <div class="flex items-center justify-center gap-3">
+                <div class="grid grid-cols-3 gap-1 bg-bg p-1.5 rounded border border-border">
+                  ${recipe.grid.map(s => s ? `
+                    <div class="w-8 h-8 mc-slot rounded flex items-center justify-center text-xs" title="${s.name}">
+                      <i class="fa-solid ${s.icon}${s.color}"></i>
                     </div>
-                  </div>
+                  ` : `<div class="w-8 h-8 bg-bg/50 rounded border border-border/40"></div>`).join('')}
+                </div>
+                <i class="fa-solid fa-arrow-right text-gray-600 text-xs"></i>
+                <div class="w-9 h-9 mc-slot rounded flex items-center justify-center text-sm" title="${recipe.output.name}">
+                  <i class="fa-solid ${recipe.output.icon} ${recipe.output.color}"></i>
                 </div>
               </div>
             `;
           }
-
           container.appendChild(card);
         });
       }
@@ -658,62 +358,31 @@
       function setCategory(cat) {
         currentCategory = cat;
         document.querySelectorAll('.cat-btn').forEach(btn => {
-          btn.classList.remove('bg-purple-600', 'text-white');
-          btn.classList.add('bg-mc-card', 'border', 'border-mc-border', 'text-gray-300');
+          btn.classList.remove('bg-primary', 'text-white');
+          btn.classList.add('bg-surface', 'border', 'border-border', 'text-gray-400');
         });
-        event.target.classList.remove('bg-mc-card', 'border', 'border-mc-border', 'text-gray-300');
-        event.target.classList.add('bg-purple-600', 'text-white');
+        event.target.classList.remove('bg-surface', 'border', 'border-border', 'text-gray-400');
+        event.target.classList.add('bg-primary', 'text-white');
         renderRecipes();
       }
 
-      function filterRecipes() {
-        renderRecipes();
+      function openModal() { document.getElementById('install-modal').classList.remove('hidden'); }
+      function closeModal() { document.getElementById('install-modal').classList.add('hidden'); }
+
+      function downloadFile(file, name) {
+        showToast(`Downloading ${name}...`);
       }
 
-      // Modal Controls
-      function openModal() {
-        document.getElementById('install-modal').classList.remove('hidden');
-      }
-
-      function closeModal() {
-        document.getElementById('install-modal').classList.add('hidden');
-      }
-
-      // Simulated Download Action
-      function downloadFile(filename, label) {
-        showToast(`Starting download: ${label}...`, 'info');
-        setTimeout(() => {
-          showToast(`Downloaded ${filename} successfully!`, 'success');
-        }, 1200);
-      }
-
-      // Toast Notifications
-      function showToast(message, type = 'info') {
+      function showToast(msg) {
         const container = document.getElementById('toast-container');
         const toast = document.createElement('div');
-        
-        const bgColor = type === 'success' ? 'bg-emerald-950/90 border-emerald-500/50 text-emerald-200' : 'bg-purple-950/90 border-purple-500/50 text-purple-200';
-        const icon = type === 'success' ? 'fa-circle-check text-emerald-400' : 'fa-circle-info text-purple-400';
-
-        toast.className = `px-4 py-3 rounded-xl border backdrop-blur-md shadow-2xl flex items-center gap-3 text-xs pointer-events-auto transition-all transform translate-x-10 opacity-0 ${bgColor}`;
-        toast.innerHTML = `<i class="fa-solid ${icon} text-base"></i><span>${message}</span>`;
-
+        toast.className = 'px-3 py-2 bg-surface border border-primary/50 text-white text-xs rounded shadow-lg font-mono';
+        toast.innerText = msg;
         container.appendChild(toast);
-
-        requestAnimationFrame(() => {
-          toast.classList.remove('translate-x-10', 'opacity-0');
-        });
-
-        setTimeout(() => {
-          toast.classList.add('translate-x-10', 'opacity-0');
-          setTimeout(() => toast.remove(), 300);
-        }, 3500);
+        setTimeout(() => toast.remove(), 2500);
       }
 
-      // Initial Render
-      document.addEventListener('DOMContentLoaded', () => {
-        renderRecipes();
-      });
+      document.addEventListener('DOMContentLoaded', renderRecipes);
     </script>
 </body>
 </html>
