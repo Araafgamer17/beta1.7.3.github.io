@@ -19,7 +19,7 @@
 | --- | --- |
 | **Game Version** | Minecraft Beta 1.7.3 |
 | **Mod Loader Requirement** | None (Standalone Jar Mod) |
-| **Java Compatibility** | Java 8 – Java 21 |
+| **Java Compatibility** | Java 8 |
 | **Multiplayer Status** | Singleplayer Only (SMP Planned) |
 
 ---
