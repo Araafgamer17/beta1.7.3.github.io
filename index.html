@@ -1,26 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcane Expansion - Beta 1.7.3 Standalone Mod</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Arcane Expansion — Beta 1.7.3</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
       tailwind.config = {
-        darkMode: 'class',
         theme: {
           extend: {
             colors: {
-              bg: '#0a0a0c',
-              surface: '#121216',
-              border: '#22222a',
-              primary: '#a855f7',
-              primaryHover: '#9333ea'
+              accent: '#a855f7'
             },
             fontFamily: {
-              mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+              mono: ['ui-monospace', 'SFMono-Regular', 'Consolas', 'monospace'],
               sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
             }
           }
@@ -28,234 +22,136 @@
       }
     </script>
 </head>
-<body class="bg-bg text-gray-300 font-sans antialiased min-h-screen flex flex-col selection:bg-purple-900 selection:text-white">
+<body class="bg-black text-zinc-300 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-zinc-800 selection:text-white">
 
-    <!-- Toast Notifications -->
-    <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-6 py-12 w-full space-y-12">
 
-    <!-- Minimal Header -->
-    <header class="border-b border-border bg-surface/50 backdrop-blur sticky top-0 z-40">
-        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+        <!-- Header -->
+        <header class="flex items-center justify-between border-b border-zinc-800 pb-6">
             <div class="flex items-center gap-3">
-                <span class="font-bold text-white tracking-tight flex items-center gap-2">
-                    <i class="fa-solid fa-wand-magic-sparkles text-primary"></i> Arcane Expansion
+                <span class="font-semibold text-white tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-wand-magic-sparkles text-accent text-sm"></i> Arcane Expansion
                 </span>
-                <span class="text-[10px] font-mono bg-purple-950 text-purple-300 border border-purple-800/40 px-2 py-0.5 rounded">b1.7.3</span>
+                <span class="text-[11px] font-mono text-zinc-500">b1.7.3</span>
             </div>
-
-            <nav class="flex items-center gap-6 text-xs font-medium">
+            <nav class="flex items-center gap-5 text-xs text-zinc-400 font-mono">
                 <a href="#downloads" class="hover:text-white transition-colors">Downloads</a>
-                <a href="#specs" class="hover:text-white transition-colors">Specs</a>
-                <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/issues" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-1.5 text-gray-400">
-                    <i class="fa-solid fa-bug text-[10px] text-red-400"></i> Report Issue
+                <a href="#guide" class="hover:text-white transition-colors">Install</a>
+                <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/issues" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                    Issues &rarr;
                 </a>
-                <button onclick="openModal()" class="text-primary hover:text-purple-400 font-mono text-[11px] border border-primary/30 px-2.5 py-1 rounded bg-purple-950/20">
-                    Install Guide
-                </button>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-12 space-y-16">
-
-        <!-- Minimal Hero -->
-        <section class="space-y-4">
-            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full border border-purple-800/40 bg-purple-950/30 text-purple-300 text-[11px] font-mono">
-                Standalone Jar Mod &bull; Zero ModLoader Dependency
-            </div>
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                Ancient Magic for Minecraft Beta 1.7.3
+        <!-- Hero Section -->
+        <section class="space-y-3">
+            <p class="text-xs font-mono text-accent uppercase tracking-wider">Standalone Jar Mod</p>
+            <h1 class="text-2xl sm:text-3xl font-medium text-white tracking-tight">
+                Ancient magic integrated into Minecraft Beta 1.7.3.
             </h1>
-            <p class="text-gray-400 text-sm max-w-2xl leading-relaxed">
-                Lightweight, high-performance standalone expansion adding magic tables, pedestals, and wands directly into vanilla Minecraft Beta 1.7.3.
+            <p class="text-zinc-400 text-sm leading-relaxed max-w-xl">
+                Lightweight expansion adding magic tables, pedestals, and wands directly into vanilla Minecraft without requiring ModLoader.
             </p>
-            <div class="flex items-center gap-3 pt-2">
-                <a href="#downloads" class="px-4 py-2 bg-primary hover:bg-primaryHover text-white text-xs font-semibold rounded transition-all">
-                    Download Beta
-                </a>
-                <button onclick="openModal()" class="px-4 py-2 bg-surface hover:bg-gray-800 text-gray-300 border border-border text-xs rounded transition-all">
-                    Installation Steps
-                </button>
+        </section>
+
+        <!-- Specs Line -->
+        <section class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono border-y border-zinc-800 py-4">
+            <div>
+                <span class="text-zinc-600 block">MODLOADER</span>
+                <span class="text-zinc-200">Not Required</span>
+            </div>
+            <div>
+                <span class="text-zinc-600 block">VERSION</span>
+                <span class="text-zinc-200">Beta 1.7.3</span>
+            </div>
+            <div>
+                <span class="text-zinc-600 block">JAVA</span>
+                <span class="text-zinc-200">8 – 21</span>
+            </div>
+            <div>
+                <span class="text-zinc-600 block">MODE</span>
+                <span class="text-zinc-200">Singleplayer</span>
             </div>
         </section>
 
-        <!-- Minimal Specs Row -->
-        <section id="specs" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div class="p-3 bg-surface border border-border rounded">
-                <div class="text-[10px] text-gray-500 font-mono uppercase">ModLoader</div>
-                <div class="text-xs font-bold text-emerald-400 mt-1">Not Required</div>
-            </div>
-            <div class="p-3 bg-surface border border-border rounded">
-                <div class="text-[10px] text-gray-500 font-mono uppercase">Version</div>
-                <div class="text-xs font-bold text-white mt-1">Beta 1.7.3</div>
-            </div>
-            <div class="p-3 bg-surface border border-border rounded">
-                <div class="text-[10px] text-gray-500 font-mono uppercase">Java</div>
-                <div class="text-xs font-bold text-white mt-1">Java 8 – 21</div>
-            </div>
-            <div class="p-3 bg-surface border border-border rounded">
-                <div class="text-[10px] text-gray-500 font-mono uppercase">Multiplayer</div>
-                <div class="text-xs font-bold text-amber-400 mt-1">Singleplayer Only (SMP Soon)</div>
-            </div>
-        </section>
-
-        <!-- Prominent Minimal Downloads -->
+        <!-- Downloads Section -->
         <section id="downloads" class="space-y-6">
-            <h2 class="text-lg font-bold text-white tracking-tight flex items-center justify-between">
-                <span>Downloads</span>
-                <span class="text-xs font-mono font-normal text-amber-400 bg-amber-950/30 border border-amber-800/30 px-2 py-0.5 rounded">Early Access</span>
-            </h2>
+            <h2 class="text-sm font-semibold text-white tracking-tight uppercase font-mono text-zinc-400">Downloads</h2>
 
-            <!-- Latest Release -->
-            <div class="space-y-3">
-                <div class="text-xs font-mono text-purple-400 font-semibold flex items-center gap-2">
-                    <i class="fa-solid fa-sparkles"></i> Latest Release (Beta 1.7.3_01-pre-2)
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- ZIP Option -->
-                    <div class="p-5 bg-surface border border-border rounded-lg space-y-3 flex flex-col justify-between">
+            <!-- Latest Release Table -->
+            <div class="space-y-2">
+                <div class="text-xs font-mono text-zinc-400">Latest Release — b1.7.3_01-pre-2</div>
+                <div class="border border-zinc-800 rounded divide-y divide-zinc-800 text-xs">
+                    <div class="p-3.5 flex items-center justify-between hover:bg-zinc-900/50 transition-colors">
                         <div>
-                            <div class="flex items-center justify-between">
-                                <h3 class="text-sm font-bold text-white">Mod ZIP Package</h3>
-                                <span class="text-[10px] font-mono text-purple-400">1.24 MB</span>
-                            </div>
-                            <p class="text-xs text-gray-400 mt-1">
-                                Direct `.class` files for manual insertion or Prism/MultiMC Jar-Mod manager.
-                            </p>
+                            <div class="font-medium text-white">Mod ZIP Package</div>
+                            <div class="text-zinc-500 font-mono text-[11px] mt-0.5">Raw class files for manual injection or MultiMC / Prism</div>
                         </div>
                         <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-2/Arcane.ExpansionBeta1.7.3_01-pre-2.zip" 
-                           onclick="showToast('Starting ZIP Download...')"
-                           class="w-full py-2 bg-primary hover:bg-primaryHover text-white text-xs font-semibold rounded text-center transition-colors block">
-                            Download ZIP
+                           class="font-mono text-accent hover:underline ml-4 whitespace-nowrap">
+                            .zip (1.24 MB)
                         </a>
                     </div>
-
-                    <!-- Full Game JAR Option -->
-                    <div class="p-5 bg-surface border border-border rounded-lg space-y-3 flex flex-col justify-between">
+                    <div class="p-3.5 flex items-center justify-between hover:bg-zinc-900/50 transition-colors">
                         <div>
-                            <div class="flex items-center justify-between">
-                                <h3 class="text-sm font-bold text-white">Pre-Patched minecraft.jar</h3>
-                                <span class="text-[10px] font-mono text-emerald-400">4.85 MB</span>
-                            </div>
-                            <p class="text-xs text-gray-400 mt-1">
-                                Ready-to-use game JAR with META-INF pre-cleared. Swap into your instance.
-                            </p>
+                            <div class="font-medium text-white">Pre-Patched minecraft.jar</div>
+                            <div class="text-zinc-500 font-mono text-[11px] mt-0.5">Ready-to-use executable jar file with META-INF cleared</div>
                         </div>
                         <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-2/Arcane.ExpansionBeta1.7.3_01-pre-2.jar" 
-                           onclick="showToast('Starting JAR Download...')"
-                           class="w-full py-2 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold rounded text-center transition-colors block">
-                            Download JAR
+                           class="font-mono text-accent hover:underline ml-4 whitespace-nowrap">
+                            .jar (4.85 MB)
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Older Releases -->
-            <div class="space-y-3 pt-4 border-t border-border">
-                <div class="text-xs font-mono text-gray-400 font-semibold flex items-center gap-2">
-                    <i class="fa-solid fa-clock-rotate-left"></i> Archive / Older Versions (Beta 1.7.3_01-pre-1)
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Older ZIP Option -->
-                    <div class="p-5 bg-surface border border-border rounded-lg space-y-3 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between">
-                                <h3 class="text-sm font-bold text-white">Mod ZIP Package (Pre-1)</h3>
-                                <span class="text-[10px] font-mono text-purple-400">Legacy</span>
-                            </div>
-                            <p class="text-xs text-gray-400 mt-1">
-                                Previous stable baseline mod package for manual configuration or troubleshooting.
-                            </p>
-                        </div>
+            <!-- Legacy Release Table -->
+            <div class="space-y-2 pt-2">
+                <div class="text-xs font-mono text-zinc-500">Archive — b1.7.3_01-pre-1</div>
+                <div class="border border-zinc-800/60 rounded divide-y divide-zinc-800/60 text-xs">
+                    <div class="p-3 flex items-center justify-between hover:bg-zinc-900/30 transition-colors">
+                        <span class="text-zinc-400">Mod ZIP Package (Pre-1)</span>
                         <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01.zip" 
-                           onclick="showToast('Starting Legacy ZIP Download...')"
-                           class="w-full py-2 bg-surface hover:bg-gray-800 border border-border text-gray-300 text-xs font-semibold rounded text-center transition-colors block">
-                            Download ZIP (Pre-1)
-                        </a>
+                           class="font-mono text-zinc-400 hover:text-white transition-colors">.zip</a>
                     </div>
-
-                    <!-- Older Full Game JAR Option -->
-                    <div class="p-5 bg-surface border border-border rounded-lg space-y-3 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between">
-                                <h3 class="text-sm font-bold text-white">Pre-Patched minecraft.jar (Pre-1)</h3>
-                                <span class="text-[10px] font-mono text-emerald-400">Legacy</span>
-                            </div>
-                            <p class="text-xs text-gray-400 mt-1">
-                                Older pre-patched release jar file for backward compatibility reference.
-                            </p>
-                        </div>
+                    <div class="p-3 flex items-center justify-between hover:bg-zinc-900/30 transition-colors">
+                        <span class="text-zinc-400">Pre-Patched minecraft.jar (Pre-1)</span>
                         <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01.jar" 
-                           onclick="showToast('Starting Legacy JAR Download...')"
-                           class="w-full py-2 bg-surface hover:bg-gray-800 border border-border text-gray-300 text-xs font-semibold rounded text-center transition-colors block">
-                            Download JAR (Pre-1)
-                        </a>
+                           class="font-mono text-zinc-400 hover:text-white transition-colors">.jar</a>
                     </div>
                 </div>
             </div>
         </section>
 
-    </main>
-
-    <!-- Installation Modal -->
-    <div id="install-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-surface border border-border rounded-lg max-w-lg w-full p-6 space-y-4">
-            <div class="flex items-center justify-between border-b border-border pb-3">
-                <h3 class="text-sm font-bold text-white">Standalone Installation Guide</h3>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-mono">
-                <div class="p-2.5 bg-amber-950/40 border border-amber-800/40 rounded text-amber-300 text-[11px]">
-                    <strong>IMPORTANT:</strong> Delete <code class="bg-black/50 px-1 py-0.5 rounded text-white">META-INF</code> inside <code class="bg-black/50 px-1 py-0.5 rounded text-white">minecraft.jar</code> or the game will crash!
-                </div>
-
+        <!-- Simple Guide Section -->
+        <section id="guide" class="space-y-3 pt-4 border-t border-zinc-800 text-xs font-mono leading-relaxed">
+            <h2 class="font-semibold text-white uppercase tracking-tight">Quick Setup</h2>
+            <p class="text-amber-400/90 font-sans">
+                Notice: Delete <code class="bg-zinc-900 px-1 py-0.5 rounded text-zinc-300">META-INF</code> from <code class="bg-zinc-900 px-1 py-0.5 rounded text-zinc-300">minecraft.jar</code> or the game will crash.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 font-sans text-zinc-400">
                 <div>
-                    <span class="text-white font-bold block mb-1">Method 1: Manual Injection</span>
-                    1. Open <code class="bg-black px-1 rounded text-purple-300">%appdata%\.minecraft\bin\minecraft.jar</code> in 7-Zip or WinRAR.<br>
-                    2. Delete <strong class="text-red-400">META-INF</strong> folder.<br>
-                    3. Copy all `.class` files from mod ZIP into `minecraft.jar`.
+                    <span class="text-white font-medium block mb-1">Manual Installation</span>
+                    1. Open <code class="text-zinc-300 font-mono text-[11px]">minecraft.jar</code> in 7-Zip/WinRAR.<br>
+                    2. Remove <strong class="text-zinc-200">META-INF</strong> folder.<br>
+                    3. Copy all class files from mod ZIP into the jar.
                 </div>
-
                 <div>
-                    <span class="text-white font-bold block mb-1">Method 2: Prism / MultiMC</span>
-                    1. Edit Instance &rarr; Version Tab.<br>
-                    2. Click "Add to minecraft.jar" &rarr; Choose downloaded ZIP package.
+                    <span class="text-white font-medium block mb-1">Prism / MultiMC</span>
+                    1. Edit Instance &rarr; Version tab.<br>
+                    2. Click "Add to minecraft.jar".<br>
+                    3. Select the downloaded ZIP file.
                 </div>
             </div>
+        </section>
 
-            <div class="flex justify-end pt-2">
-                <button onclick="closeModal()" class="px-4 py-1.5 bg-primary hover:bg-primaryHover text-white text-xs font-semibold rounded">
-                    Close
-                </button>
-            </div>
-        </div>
     </div>
 
     <!-- Minimal Footer -->
-    <footer class="border-t border-border py-6 mt-auto bg-surface/30">
-        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
-            <div>Arcane Expansion Beta 1.7.3 &bull; Unofficial Minecraft Mod</div>
-            <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/issues" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 transition-colors flex items-center gap-1.5 text-gray-400">
-                <i class="fa-solid fa-bug text-red-400 text-[11px]"></i> Report an Issue
-            </a>
-        </div>
+    <footer class="max-w-3xl mx-auto px-6 py-6 w-full border-t border-zinc-800/80 text-xs text-zinc-600 flex justify-between items-center font-mono">
+        <span>Arcane Expansion</span>
+        <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/issues" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-400 transition-colors">Report Issue</a>
     </footer>
 
-    <!-- Logic -->
-    <script>
-      function openModal() { document.getElementById('install-modal').classList.remove('hidden'); }
-      function closeModal() { document.getElementById('install-modal').classList.add('hidden'); }
-
-      function showToast(msg) {
-        const container = document.getElementById('toast-container');
-        const toast = document.createElement('div');
-        toast.className = 'px-3 py-2 bg-surface border border-primary/50 text-white text-xs rounded shadow-lg font-mono';
-        toast.innerText = msg;
-        container.appendChild(toast);
-        setTimeout(() => toast.remove(), 2500);
-      }
-    </script>
 </body>
 </html>
