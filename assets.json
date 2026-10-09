@@ -1,0 +1,21 @@
+{
+  "assets": {
+    "index": "b1.7.3",
+    "base_url": "https://resources.download.minecraft.net/",
+    "destination": "Game file/assets/",
+    "resources": [
+      {
+        "path": "sound3/newsound/random/classic_hurt.ogg",
+        "hash": "1e2f7588b489ff65d4439c0d3f829f0e1f737199"
+      },
+      {
+        "path": "music/game/calm1.ogg",
+        "hash": "3e23ff5e670d8a5779a1f267a05eb8035a90d40e"
+      },
+      {
+        "path": "sound3/newsound/random/door_open.ogg",
+        "hash": "3f9c6a7e089d71c4a523a1f8221b34e56877df23"
+      }
+    ]
+  }
+}
