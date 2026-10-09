@@ -1,0 +1,10 @@
+{
+  "runtime": {
+    "id": "zulu8-win-x64",
+    "name": "Azul Zulu OpenJDK 8 JRE",
+    "version": "8.0.504",
+    "url": "https://cdn.azul.com/zulu/bin/zulu8.96.0.205-ca-jre8.0.504-win_x64.zip",
+    "install_dir": "Game file/java",
+    "executable": "Game file/java/bin/javaw.exe"
+  }
+}
