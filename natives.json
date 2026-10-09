@@ -1,0 +1,33 @@
+{
+  "natives": {
+    "os": "windows",
+    "arch": "x64",
+    "extract_destination": "Game file/libraries/",
+    "packages": [
+      {
+        "name": "org.lwjgl.lwjgl:lwjgl-platform:2.9.0:natives-windows",
+        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/lwjgl-platform/2.9.0/lwjgl-platform-2.9.0-natives-windows.jar",
+        "sha1": "3f11873dc8e84c854ec7c5a8fd2e869f8aaef764",
+        "size": 609967,
+        "files_to_extract": [
+          "lwjgl.dll",
+          "lwjgl64.dll",
+          "OpenAL32.dll",
+          "OpenAL64.dll"
+        ]
+      },
+      {
+        "name": "net.java.jinput:jinput-platform:2.0.5:natives-windows",
+        "url": "https://libraries.minecraft.net/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-windows.jar",
+        "sha1": "385ee093e01f587f30ee1c8a2ee7d408fd732e16",
+        "size": 155179,
+        "files_to_extract": [
+          "jinput-dx8.dll",
+          "jinput-dx8_64.dll",
+          "jinput-raw.dll",
+          "jinput-raw_64.dll"
+        ]
+      }
+    ]
+  }
+}
