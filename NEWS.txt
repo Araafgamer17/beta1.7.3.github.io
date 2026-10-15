@@ -1,0 +1,68 @@
+<html>
+<body style='color: white; font-family: sans-serif; margin-top: 15px;'>
+
+  <!-- RELEASE VERSION HEADER -->
+  <h2 style='color: #40a745; border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 5px;'>
+    Arcane Expansion v1.7.3_01-pre-1
+  </h2>
+  <div style='color: #a0aec0; font-size: 11px; margin-bottom: 15px;'>
+    Target Version: Minecraft Beta 1.7.3 | Release Stage: Pre-Release
+  </div>
+
+  <p style='color: #cbd5e0;'>
+    This release introduces core magic mechanics, custom crafting blocks, enchantment utilities, GUI overrides, and key engine stability fixes for HUD elements.
+  </p>
+
+  <!-- NEW FEATURES -->
+  <h3 style='color: #ffffff; border-bottom: 1px solid #2d3748; padding-bottom: 4px;'>
+    Magic & Enchanting
+  </h3>
+  <ul style='color: #cbd5e0; line-height: 1.4;'>
+    <li><b>Magic Table & Pedestal:</b> Added 3D animated blocks with spinning renderers for spell/crafting setups.</li>
+    <li><b>Magic Crafting Table:</b> Specialized GUI and tile entity handling for magical recipes.</li>
+    <li><b>Magic Wand:</b> Added left-click attack detection for equipped wand items.</li>
+    <li><b>Mending Enchantment:</b> Shift-Right Click item repair mechanic using stored XP/cooldowns.</li>
+    <li><b>Silk Touch & Fire Aspect:</b> Integrated block harvest overrides and mob flame effects on attack.</li>
+    <li><b>XP System:</b> Added XP gain on mob kills.</li>
+  </ul>
+
+  <!-- CUSTOM ITEMS & BLOCKS -->
+  <h3 style='color: #ffffff; border-bottom: 1px solid #2d3748; padding-bottom: 4px;'>
+    Custom Items & Blocks
+  </h3>
+  <ul style='color: #cbd5e0; line-height: 1.4;'>
+    <li>Added <b>Book and Quill</b>, <b>Bottle o' Enchanting</b>, <b>Magic Wand</b>, and <b>Magic Crystal</b>.</li>
+    <li>Registered custom names and itemsList mapping for full inventory support.</li>
+    <li>Updated main menu visual overrides.</li>
+  </ul>
+
+  <!-- SPELL REFACTOR & XP SYSTEM -->
+  <h3 style='color: #ffffff; border-bottom: 1px solid #2d3748; padding-bottom: 4px;'>
+    Spells & XP System Overhaul
+  </h3>
+  <ul style='color: #cbd5e0; line-height: 1.4;'>
+    <li><b>Fireball Physics Refactor (mg_fire):</b> Overhauled fireball velocity vectors to eliminate trajectory drift and momentum loss.</li>
+    <li><b>Spell Launch Coordinates:</b> Aligned spawn position directly with player eye height to prevent self-collision when casting.</li>
+    <li><b>Spell Tier Scaling:</b>
+      <ul>
+        <li><b>Tier 1:</b> Standard speed casting and ignition.</li>
+        <li><b>Tier 2:</b> Faster velocity with dual Flame/Smoke particle effects.</li>
+        <li><b>Tier 3:</b> High-speed projectile launch with dense magical particle bursts.</li>
+      </ul>
+    </li>
+    <li><b>World XP Persistence:</b> XP progress now auto-saves to <code style='color: #40a745;'>player_xp.dat</code> inside each world folder.</li>
+    <li><b>Custom In-Game HUD:</b> Added green experience progress bar and level display above the hotbar.</li>
+  </ul>
+
+  <!-- BALANCE & BUG FIXES -->
+  <h3 style='color: #ffffff; border-bottom: 1px solid #2d3748; padding-bottom: 4px;'>
+    Balance & Bug Fixes
+  </h3>
+  <ul style='color: #cbd5e0; line-height: 1.4;'>
+    <li><b>Magic Crystal Drop Rate:</b> Increased drop chance from hostile mobs (Creeper, Skeleton, Zombie, Spider, Ghast, Slime) to <b>10% (1 in 10)</b>.</li>
+    <li><b>Class Separation:</b> Separated <code style='color: #40a745;'>PlayerXpManager</code> into a standalone Java file to resolve nested compiler errors.</li>
+    <li><b>Beta 1.7.3 API Fixes:</b> Fixed <code style='color: #40a745;'>EntityPlayer</code> onDeath hooks by utilizing native player score handling.</li>
+  </ul>
+
+</body>
+</html>
