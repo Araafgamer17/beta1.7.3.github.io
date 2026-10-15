@@ -1,29 +1,29 @@
 <html>
-<body style='color: white; font-family: sans-serif; margin-top: 15px;'>
+<body style="color: white; font-family: sans-serif; margin-top: 15px;">
 
   <!-- RELEASE VERSION HEADER: PRE-2 -->
-  <h2 style='color: #40a745; border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 5px;'>
+  <h2 style="color: #40a745; margin-bottom: 5px;">
     Arcane Expansion v1.7.3_01-pre-2
   </h2>
-  <div style='color: #a0aec0; font-size: 11px; margin-bottom: 15px;'>
+  <div style="color: #a0aec0; font-size: 11px; margin-bottom: 15px;">
     Target Version: Minecraft Beta 1.7.3 | Release Stage: Pre-Release (Released by Araafgamer17)
   </div>
 
-  <p style='color: #cbd5e0;'>
+  <p style="color: #cbd5e0;">
     This pre-release introduces major magic fire spell refactoring, a custom XP and leveling system with custom HUD tracking, crystal drop rate balance tweaks, and crucial compatibility bug fixes for Minecraft Beta 1.7.3.
   </p>
 
   <!-- NEW FEATURES -->
-  <h3 style='color: #ffffff; border-bottom: 1px solid #2d3748; padding-bottom: 4px;'>
+  <h3 style="color: #ffffff; margin-top: 15px; margin-bottom: 5px;">
     New Features & Improvements
   </h3>
-  <ul style='color: #cbd5e0; line-height: 1.4;'>
-    <li><b>1. Magic Fire Spell Refactor (<code style='color: #40a745;'>mg_fire.java</code>):</b>
-      <ul style='margin-top: 5px;'>
-        <li><b>Fixed Fireball Physics:</b> Overhauled EntityFireball initialization to set velocity vectors directly (<code style='color: #40a745;'>motionX/Y/Z</code>), eliminating momentum loss and trajectory drift in Beta 1.7.3.</li>
+  <ul style="color: #cbd5e0; line-height: 1.4; margin-top: 5px;">
+    <li><b>1. Magic Fire Spell Refactor (<code style="color: #40a745;">mg_fire.java</code>):</b>
+      <ul style="margin-top: 5px;">
+        <li><b>Fixed Fireball Physics:</b> Overhauled EntityFireball initialization to set velocity vectors directly (<code style="color: #40a745;">motionX/Y/Z</code>), eliminating momentum loss and trajectory drift in Beta 1.7.3.</li>
         <li><b>Improved Spawn Positioning:</b> Aligned spell launch coordinates directly with the player's eye height and forward vector to prevent self-collision upon casting.</li>
         <li><b>Tier Scaling:</b>
-          <ul style='margin-top: 3px;'>
+          <ul style="margin-top: 3px;">
             <li><b>Tier 1:</b> Standard speed casting and block ignition.</li>
             <li><b>Tier 2:</b> Faster fireball velocity with dual Flame/Smoke particle effects.</li>
             <li><b>Tier 3:</b> High-speed projectile launch with dense magical particle bursts.</li>
@@ -32,38 +32,38 @@
       </ul>
     </li>
     
-    <li style='margin-top: 12px;'><b>2. Custom XP & Leveling System (<code style='color: #40a745;'>XPSystem.java</code>):</b>
-      <ul style='margin-top: 5px;'>
-        <li><b>Player XP System:</b> Integrated a custom experience and leveling mechanic supporting auto-saving (<code style='color: #40a745;'>player_xp.dat</code>) per world folder.</li>
+    <li style="margin-top: 12px;"><b>2. Custom XP & Leveling System (<code style="color: #40a745;">XPSystem.java</code>):</b>
+      <ul style="margin-top: 5px;">
+        <li><b>Player XP System:</b> Integrated a custom experience and leveling mechanic supporting auto-saving (<code style="color: #40a745;">player_xp.dat</code>) per world folder.</li>
         <li><b>Custom In-Game HUD:</b> Added a green experience progress bar and level display above the hotbar.</li>
-        <li><b>Mob Kill XP Integration:</b> Integrated mob experience gains into <code style='color: #40a745;'>EntityLiving.java</code> across passive and hostile mobs.</li>
+        <li><b>Mob Kill XP Integration:</b> Integrated mob experience gains into <code style="color: #40a745;">EntityLiving.java</code> across passive and hostile mobs.</li>
       </ul>
     </li>
   </ul>
 
   <!-- CHANGES & BALANCE TWEAKS -->
-  <h3 style='color: #ffffff; border-bottom: 1px solid #2d3748; padding-bottom: 4px;'>
+  <h3 style="color: #ffffff; margin-top: 15px; margin-bottom: 5px;">
     Changes & Balance Tweaks
   </h3>
-  <ul style='color: #cbd5e0; line-height: 1.4;'>
+  <ul style="color: #cbd5e0; line-height: 1.4; margin-top: 5px;">
     <li><b>Magic Crystal Drop Rate:</b> Increased the drop chance of Magic Crystals from hostile mobs (Creeper, Skeleton, Zombie, Spider, Ghast, Slime) to <b>1 in 10 (10%)</b>.</li>
   </ul>
 
   <!-- BUG FIXES -->
-  <h3 style='color: #ffffff; border-bottom: 1px solid #2d3748; padding-bottom: 4px;'>
+  <h3 style="color: #ffffff; margin-top: 15px; margin-bottom: 5px;">
     Bug Fixes
   </h3>
-  <ul style='color: #cbd5e0; line-height: 1.4;'>
-    <li><b>Fixed Compilation Error:</b> Separated <code style='color: #40a745;'>PlayerXpManager</code> into its own standalone Java file (<code style='color: #40a745;'>PlayerXpManager.java</code>) to prevent illegal inner/nested class errors in <code style='color: #40a745;'>mod_BaseMod.java</code>.</li>
-    <li><b>Beta 1.7.3 Compatibility:</b> Fixed <code style='color: #40a745;'>EntityPlayer</code> methods in <code style='color: #40a745;'>onDeath</code> hooks by replacing missing modern NBT methods with native Beta 1.7.3 player score handling.</li>
+  <ul style="color: #cbd5e0; line-height: 1.4; margin-top: 5px;">
+    <li><b>Fixed Compilation Error:</b> Separated <code style="color: #40a745;">PlayerXpManager</code> into its own standalone Java file (<code style="color: #40a745;">PlayerXpManager.java</code>) to prevent illegal inner/nested class errors in <code style="color: #40a745;">mod_BaseMod.java</code>.</li>
+    <li><b>Beta 1.7.3 Compatibility:</b> Fixed <code style="color: #40a745;">EntityPlayer</code> methods in <code style="color: #40a745;">onDeath</code> hooks by replacing missing modern NBT methods with native Beta 1.7.3 player score handling.</li>
   </ul>
 
   <!-- PREVIOUS VERSION REFERENCE -->
   <br>
-  <h3 style='color: #a0aec0; border-bottom: 1px solid #333; padding-bottom: 4px;'>
+  <h3 style="color: #a0aec0; margin-top: 15px; margin-bottom: 5px;">
     Previous Release: v1.7.3_01-pre-1
   </h3>
-  <ul style='color: #a0aec0; line-height: 1.4; font-size: 13px;'>
+  <ul style="color: #a0aec0; line-height: 1.4; font-size: 13px; margin-top: 5px;">
     <li><b>Magic & Enchanting:</b> Magic Table, Pedestal, Magic Crafting Table, Magic Wand, and Mending/Silk Touch/Fire Aspect utilities.</li>
     <li><b>Custom Items:</b> Book and Quill, Bottle o' Enchanting, and Magic Crystals.</li>
   </ul>
