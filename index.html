@@ -45,12 +45,12 @@
 
         <!-- Hero Section -->
         <section class="space-y-3">
-            <p class="text-xs font-mono text-accent uppercase tracking-wider">Standalone Jar Mod</p>
+            <p class="text-xs font-mono text-accent uppercase tracking-wider">Standalone Jar Mod & Launcher</p>
             <h1 class="text-2xl sm:text-3xl font-medium text-white tracking-tight">
                 Ancient magic integrated into Minecraft Beta 1.7.3.
             </h1>
             <p class="text-zinc-400 text-sm leading-relaxed max-w-xl">
-                Lightweight expansion adding magic tables, pedestals, and wands directly into vanilla Minecraft without requiring ModLoader.
+                Lightweight expansion adding magic tables, pedestals, and wands directly into vanilla Minecraft with custom management tools and automatic setup.
             </p>
         </section>
 
@@ -78,18 +78,47 @@
         <section id="downloads" class="space-y-6">
             <h2 class="text-sm font-semibold text-white tracking-tight uppercase font-mono text-zinc-400">Downloads</h2>
 
-            <!-- Latest Release Table -->
+            <!-- Arcane Launcher Section -->
             <div class="space-y-2">
-                <div class="text-xs font-mono text-zinc-400">Latest Release — b1.7.3_01-pre-2</div>
+                <div class="text-xs font-mono text-accent flex items-center gap-2">
+                    <i class="fa-solid fa-rocket text-xs"></i> Arcane Launcher — v0.1 (Universal & Windows)
+                </div>
+                <div class="border border-accent/30 rounded divide-y divide-zinc-800 text-xs bg-accent/5">
+                    <div class="p-3.5 flex items-center justify-between hover:bg-zinc-900/50 transition-colors">
+                        <div>
+                            <div class="font-medium text-white">Windows Executable (.exe)</div>
+                            <div class="text-zinc-500 font-mono text-[11px] mt-0.5">Standalone launcher binary for Windows systems</div>
+                        </div>
+                        <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/archive/refs/tags/ArcaneLauncherV-0.1/ArcaneLauncherV-0.1.exe" 
+                           class="font-mono text-accent hover:underline ml-4 whitespace-nowrap">
+                            .exe
+                        </a>
+                    </div>
+                    <div class="p-3.5 flex items-center justify-between hover:bg-zinc-900/50 transition-colors">
+                        <div>
+                            <div class="font-medium text-white">Universal Java Launcher (.jar)</div>
+                            <div class="text-zinc-500 font-mono text-[11px] mt-0.5">Cross-platform executable jar package</div>
+                        </div>
+                        <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/archive/refs/tags/ArcaneLauncherV-0.1/ArcaneLauncherV-0.1.jar" 
+                           class="font-mono text-accent hover:underline ml-4 whitespace-nowrap">
+                            .jar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest Release Table (Pre-3) -->
+            <div class="space-y-2 pt-2">
+                <div class="text-xs font-mono text-zinc-400">Latest Release — b1.7.3_01-pre-3</div>
                 <div class="border border-zinc-800 rounded divide-y divide-zinc-800 text-xs">
                     <div class="p-3.5 flex items-center justify-between hover:bg-zinc-900/50 transition-colors">
                         <div>
                             <div class="font-medium text-white">Mod ZIP Package</div>
                             <div class="text-zinc-500 font-mono text-[11px] mt-0.5">Raw class files for manual injection or MultiMC / Prism</div>
                         </div>
-                        <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-2/Arcane.ExpansionBeta1.7.3_01-pre-2.zip" 
+                        <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-3/Arcane.Expansion.Beta1.7.3_01-pre-3.zip" 
                            class="font-mono text-accent hover:underline ml-4 whitespace-nowrap">
-                            .zip (1.24 MB)
+                            .zip
                         </a>
                     </div>
                     <div class="p-3.5 flex items-center justify-between hover:bg-zinc-900/50 transition-colors">
@@ -97,9 +126,9 @@
                             <div class="font-medium text-white">Pre-Patched minecraft.jar</div>
                             <div class="text-zinc-500 font-mono text-[11px] mt-0.5">Ready-to-use executable jar file with META-INF cleared</div>
                         </div>
-                        <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-2/Arcane.ExpansionBeta1.7.3_01-pre-2.jar" 
+                        <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-3/Arcane.Expansion.Beta1.7.3_01-pre-3.jar" 
                            class="font-mono text-accent hover:underline ml-4 whitespace-nowrap">
-                            .jar (4.85 MB)
+                            .jar
                         </a>
                     </div>
                 </div>
@@ -107,17 +136,21 @@
 
             <!-- Legacy Release Table -->
             <div class="space-y-2 pt-2">
-                <div class="text-xs font-mono text-zinc-500">Archive — b1.7.3_01-pre-1</div>
+                <div class="text-xs font-mono text-zinc-500">Archive — Older Pre-Releases</div>
                 <div class="border border-zinc-800/60 rounded divide-y divide-zinc-800/60 text-xs">
                     <div class="p-3 flex items-center justify-between hover:bg-zinc-900/30 transition-colors">
-                        <span class="text-zinc-400">Mod ZIP Package (Pre-1)</span>
-                        <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01.zip" 
-                           class="font-mono text-zinc-400 hover:text-white transition-colors">.zip</a>
+                        <span class="text-zinc-400">b1.7.3_01-pre-2 (ZIP & JAR)</span>
+                        <div class="flex gap-3 font-mono">
+                            <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-2/Arcane.ExpansionBeta1.7.3_01-pre-2.zip" class="text-zinc-400 hover:text-white transition-colors">.zip</a>
+                            <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-2/Arcane.ExpansionBeta1.7.3_01-pre-2.jar" class="text-zinc-400 hover:text-white transition-colors">.jar</a>
+                        </div>
                     </div>
                     <div class="p-3 flex items-center justify-between hover:bg-zinc-900/30 transition-colors">
-                        <span class="text-zinc-400">Pre-Patched minecraft.jar (Pre-1)</span>
-                        <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01.jar" 
-                           class="font-mono text-zinc-400 hover:text-white transition-colors">.jar</a>
+                        <span class="text-zinc-400">b1.7.3_01-pre-1 (ZIP & JAR)</span>
+                        <div class="flex gap-3 font-mono">
+                            <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01.zip" class="text-zinc-400 hover:text-white transition-colors">.zip</a>
+                            <a href="https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01.jar" class="text-zinc-400 hover:text-white transition-colors">.jar</a>
+                        </div>
                     </div>
                 </div>
             </div>
