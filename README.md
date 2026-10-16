@@ -24,10 +24,10 @@
 
 ## 📥 Downloads
 
-| Format | Description | Direct Link |
-| :--- | :--- | :--- |
-| **ZIP Package** | Contains raw `.class` files for manual installation or launcher mod managers (MultiMC / Prism). | [Download ZIP](https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01/Arcane.ExpansionBeta1.7.3_01.zip) |
-| **Pre-Patched JAR** | Full `minecraft.jar` pre-cleared of `META-INF` and ready to run. | [Download JAR](https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01/Arcane.ExpansionBeta1.7.3_01.jar) |
+| Format | Description |
+| :--- | :--- |
+| **ZIP Package** | Contains raw `.class` files for manual installation or launcher mod managers (MultiMC / Prism). |
+| **Pre-Patched JAR** | Full `minecraft.jar` pre-cleared of `META-INF` and ready to run. |
 
 ---
 
