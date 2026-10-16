@@ -24,24 +24,6 @@
 
 ---
 
-## 📥 Downloads
-
-### 🚀 Latest Release: `Beta 1.7.3_01-pre-2`
-
-* **[Download ZIP Package (1.24 MB)](https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-2/Arcane.ExpansionBeta1.7.3_01-pre-2.zip)**
-*Contains direct `.class` files for manual insertion or Prism/MultiMC Jar-Mod loading.*
-* **[Download Pre-Patched minecraft.jar (4.85 MB)](https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-2/Arcane.ExpansionBeta1.7.3_01-pre-2.jar)**
-*Ready-to-use game JAR with `META-INF` pre-cleared.*
-
----
-
-### 📦 Legacy / Previous Releases (`Beta 1.7.3_01-pre-1`)
-
-* **[Download Legacy ZIP Package](https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01.zip)**
-* **[Download Legacy Pre-Patched minecraft.jar](https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01.jar)**
-
----
-
 ## 📖 Installation Instructions
 
 > ⚠️ **IMPORTANT**: You MUST delete the `META-INF` folder inside your `minecraft.jar` file if installing manually, or the game will crash on startup!
