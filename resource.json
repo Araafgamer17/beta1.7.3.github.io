@@ -1,0 +1,16 @@
+{
+  "resources": [
+    {
+      "name": "resources1.zip",
+      "path": "files/resources1.zip",
+      "sha256": "9C230D53A24523D92A7929030A0E274FB3DFE4DC665E4F86929DFDE728336780",
+      "url": "https://raw.githubusercontent.com/Araafgamer17/beta1.7.3.github.io/main/files/resources1.zip"
+    },
+    {
+      "name": "resources2.zip",
+      "path": "resources2.zip",
+      "sha256": "8347984003767E69195E8B1AF5663AB89E241C83FBC969C9D7F9134B9C95EE02",
+      "url": "https://github.com/Araafgamer17/beta1.7.3.github.io/raw/refs/heads/Web/resources2.zip"
+    }
+  ]
+}
