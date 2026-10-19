@@ -12,5 +12,11 @@
       "sha256": "8347984003767E69195E8B1AF5663AB89E241C83FBC969C9D7F9134B9C95EE02",
       "url": "https://github.com/Araafgamer17/beta1.7.3.github.io/raw/refs/heads/Web/resources2.zip"
     }
+    {
+      "name": "resources3.zip",
+      "path": "resources3.zip",
+      "sha256": "1EE65303F9BD5CFCF49D06DE8DBEDD0E5C5AB7301F4302F90FA0FAACA9CC7548",
+      "url": "https://github.com/Araafgamer17/beta1.7.3.github.io/raw/refs/heads/Web/resources3.zip"
+    }
   ]
 }
