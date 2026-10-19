@@ -1,92 +1,53 @@
-<html>
-<body style="color: white; font-family: sans-serif; margin-top: 15px;">
+# Arcane Expansion v1.7.3\_01-pre-3
 
-  <!-- RELEASE VERSION HEADER: PRE-3 -->
-  <h2 style="color: #40a745; margin-bottom: 5px;">
-    Arcane Expansion v1.7.3_01-pre-3
-  </h2>
-  <div style="color: #a0aec0; font-size: 11px; margin-bottom: 15px;">
-    Target Version: Minecraft Beta 1.7.3 | Release Stage: Pre-Release (Released by Araafgamer17)[cite: 1]
-  </div>
+Target Version: Minecraft Beta 1.7.3 Release Stage: Pre-Release Released by: Araafgamer17
 
-  <p style="color: #cbd5e0;">
-    This pre-release introduces major magic spell refactoring for Earth and Water, a comprehensive electricity and tech network with hard drives and power grids, a fully overhauled GUI-based enchanting table with categorized enchantment tiers, custom XP systems, and critical NBT compatibility bug fixes for Minecraft Beta 1.7.3[cite: 1].
-  </p>
+This pre-release introduces major magic spell refactoring for Earth and Water, a comprehensive electricity and tech network with hard drives and power grids, a fully overhauled GUI-based enchanting table with categorized enchantment tiers, custom XP systems, and critical NBT compatibility bug fixes for Minecraft Beta 1.7.3.
 
-  <!-- NEW FEATURES -->
-  <h3 style="color: #ffffff; margin-top: 15px; margin-bottom: 5px;">
-    New Features & Improvements
-  </h3>
-  <ul style="color: #cbd5e0; line-height: 1.4; margin-top: 5px;">
-    <li style="margin-top: 8px;"><b>1. Earth & Water Magic Refactor:</b>
-      <ul style="margin-top: 5px;">
-        <li><b>Earth Magic (<code style="color: #40a745;">mg_earth.java</code>):</b> Added tiered casting mechanics featuring stone projectile attacks, temporary cobblestone defensive shields, and ground-shaking earthquake bursts[cite: 1].</li>
-        <li><b>Water Magic (<code style="color: #40a745;">mg_water.java</code>):</b> Added tiered spells including ice projectile freezing, water laser beams, and rapid-drowning whirlpool effects[cite: 1].</li>
-        <li><b>Master Wand (<code style="color: #40a745;">master_wand.java</code>):</b> Introduced offering double charge capacity, 50% reduced spell costs, and empowered spell tier boosts[cite: 1].</li>
-      </ul>
-    </li>
-    
-    <li style="margin-top: 12px;"><b>2. Enchanting Overhaul & GUI:</b>
-      <ul style="margin-top: 5px;">
-        <li><b>Enchanting Table GUI (<code style="color: #40a745;">GuiEnchantingTable.java</code>):</b> Implemented a fully interactive, scrollable GUI with category filters and real-time cost tracking[cite: 1].</li>
-        <li><b>Custom Enchantments:</b> Added support for Protection, Fire/Blast/Projectile Protection, Efficiency, Fortune, Silk Touch, Unbreaking, Mending, Thorns, Sharpness, Smite, Bane of Arthropods, and Speed[cite: 1].</li>
-        <li><b>Enchanted Books:</b> Added reading interfaces (<code style="color: #40a745;">GuiEnchantedBook.java</code>, <code style="color: #40a745;">ItemEnchantedBook.java</code>) and random Tier 1 book generation[cite: 1].</li>
-      </ul>
-    </li>
+## New Features & Improvements
 
-    <li style="margin-top: 12px;"><b>3. Electricity & Tech Network:</b>
-      <ul style="margin-top: 5px;">
-        <li><b>Power Grid System:</b> Built featuring Energy Cables (<code style="color: #40a745;">cable.java</code>), Coal Generators (<code style="color: #40a745;">coalGenerator.java</code>), Controllers (<code style="color: #40a745;">controller.java</code>), and Batteries (<code style="color: #40a745;">BlockBattery.java</code>)[cite: 1].</li>
-        <li><b>Hard Disk Drives:</b> Introduced <code style="color: #40a745;">diskDrive.java</code> and <code style="color: #40a745;">harddisk.java</code> with capacities ranging from 100 MB to 1 TB (<code style="color: #40a745;">HDD100MB.java</code>, <code style="color: #40a745;">HDD1GB.java</code>, etc.) and a dedicated contents viewer GUI (<code style="color: #40a745;">GuiDiskContents.java</code>)[cite: 1].</li>
-        <li><b>Components:</b> Added Display blocks (<code style="color: #40a745;">display.java</code>) and RAM/CPU items for advanced tech setups[cite: 1].</li>
-      </ul>
-    </li>
+### 1. Earth & Water Magic Refactor
 
-    <li style="margin-top: 12px;"><b>4. Items, Ores & Blood Magic:</b>
-      <ul style="margin-top: 5px;">
-        <li><b>Book and Quill:</b> Added <code style="color: #40a745;">ItemBookAndQuill.java</code> with fully functional multi-page text editing and auto-saving GUI (<code style="color: #40a745;">GuiScreenBookAndQuill.java</code>)[cite: 1].</li>
-        <li><b>Ores:</b> Introduced Copper and Silicon ores (<code style="color: #40a745;">ModBlocks.java</code>) with custom chunk generator integration (<code style="color: #40a745;">ChunkProviderGenerate.java</code>)[cite: 1].</li>
-        <li><b>Blood Magic:</b> Added Sacrificial Daggers (<code style="color: #40a745;">ItemSacrificialDagger.java</code>), Blood Vials, Blood Altars (<code style="color: #40a745;">BlockBloodAltar.java</code>), and Dark Crystals (<code style="color: #40a745;">dark_crystal.java</code>)[cite: 1].</li>
-        <li><b>Crystal Polishing:</b> Added mechanics using Sandpaper (<code style="color: #40a745;">ItemSandPaper.java</code>) and Raw Crystal Balls to craft polished Crystal Balls[cite: 1].</li>
-      </ul>
-    </li>
-  </ul>
+- Earth Magic (`mg_earth.java`): Added tiered casting mechanics featuring stone projectile attacks, temporary cobblestone defensive shields, and ground-shaking earthquake bursts.
+- Water Magic (`mg_water.java`): Added tiered spells, including ice projectile freezing, water laser beams, and rapid-drowning whirlpool effects.
+- Master Wand (`master_wand.java`): Introduced double charge capacity, 50% reduced spell costs, and empowered spell tier boosts.
 
-  <!-- CHANGES & BALANCE TWEAKS -->
-  <h3 style="color: #ffffff; margin-top: 15px; margin-bottom: 5px;">
-    Changes & Balance Tweaks
-  </h3>
-  <ul style="color: #cbd5e0; line-height: 1.4; margin-top: 5px;">
-    <li><b>Magic Crystal Drop Rates:</b> Adjusted drop rates and integration for Magic Crystals across hostile mobs[cite: 1].</li>
-    <li><b>Wand & Equipment Balancing:</b> Overhauled wand durability, charge consumption formulas, and melee combat burst stats[cite: 1].</li>
-  </ul>
+### 2. Enchanting Overhaul & GUI
 
-  <!-- BUG FIXES -->
-  <h3 style="color: #ffffff; margin-top: 15px; margin-bottom: 5px;">
-    Bug Fixes & Technical Improvements
-  </h3>
-  <ul style="color: #cbd5e0; line-height: 1.4; margin-top: 5px;">
-    <li><b>NBT & ItemStack Serialization:</b> Fixed NBT compound data persistence and deep-copy serialization within <code style="color: #40a745;">ItemStack.java</code> using stream-based byte array cloning[cite: 1]. Also fixed item stacking, tooltip rendering (<code style="color: #40a745;">Gui_Inventory.java</code>), and durability preservation hooks[cite: 1].</li>
-    <li><b>Compatibility & Stability:</b> Fixed Block and Item registration mappings, TileEntity special renderers (<code style="color: #40a745;">TileEntityPedestalRenderer.java</code>, <code style="color: #40a745;">TileEntityCableRenderer.java</code>), and null-pointer safety checks in <code style="color: #40a745;">ItemBlock.java</code>[cite: 1]. Fixed player death hooks, score handling, and boots NBT synchronization (<code style="color: #40a745;">for_boots.java</code>) for Beta 1.7.3 multiplayer and singleplayer environments[cite: 1].</li>
-  </ul>
+- Enchanting Table GUI (`GuiEnchantingTable.java`): Implemented a fully interactive, scrollable GUI with category filters and real-time cost tracking.
+- Custom Enchantments: Added support for Protection, Fire Protection, Blast Protection, Projectile Protection, Efficiency, Fortune, Silk Touch, Unbreaking, Mending, Thorns, Sharpness, Smite, Bane of Arthropods, and Speed.
+- Enchanted Books: Added reading interfaces (`GuiEnchantedBook.java`, `ItemEnchantedBook.java`) and random Tier 1 book generation.
 
-  <!-- PREVIOUS VERSION REFERENCES -->
-  <br>
-  <h3 style="color: #a0aec0; margin-top: 15px; margin-bottom: 5px;">
-    Previous Release: v1.7.3_01-pre-2
-  </h3>
-  <ul style="color: #a0aec0; line-height: 1.4; font-size: 13px; margin-top: 5px;">
-    <li><b>Magic & Systems:</b> Fire spell refactor (<code style="color: #40a745;">mg_fire.java</code>), custom XP & leveling system (<code style="color: #40a745;">XPSystem.java</code>, <code style="color: #40a745;">PlayerXpManager.java</code>) with in-game HUD tracking.</li>
-    <li><b>Balance & Fixes:</b> Magic Crystal drop rates increased to 1 in 10 (10%), compilation fixes, and Beta 1.7.3 death hook compatibility.</li>
-  </ul>
+### 3. Electricity & Tech Network
 
-  <h3 style="color: #a0aec0; margin-top: 15px; margin-bottom: 5px;">
-    Previous Release: v1.7.3_01-pre-1
-  </h3>
-  <ul style="color: #a0aec0; line-height: 1.4; font-size: 13px; margin-top: 5px;">
-    <li><b>Magic & Enchanting:</b> Magic Table, Pedestal, Magic Crafting Table, Magic Wand, and Mending/Silk Touch/Fire Aspect utilities.</li>
-    <li><b>Custom Items:</b> Book and Quill, Bottle o' Enchanting, and Magic Crystals.</li>
-  </ul>
+- Power Grid System: Introduced a power network featuring Energy Cables (`cable.java`), Coal Generators (`coalGenerator.java`), Controllers (`controller.java`), and Batteries (`BlockBattery.java`).
+- Hard Disk Drives: Introduced `diskDrive.java` and `harddisk.java`, with capacities ranging from 100 MB to 1 TB (`HDD100MB.java`, `HDD1GB.java`, etc.), alongside a dedicated contents viewer GUI (`GuiDiskContents.java`).
+- Components: Added Display blocks (`display.java`) and RAM/CPU items for advanced technology setups.
 
-</body>
-</html>
+### 4. Items, Ores & Blood Magic
+
+- Book and Quill: Added `ItemBookAndQuill.java` with fully functional multi-page text editing and an auto-saving GUI (`GuiScreenBookAndQuill.java`).
+- Ores: Introduced Copper and Silicon ores through `ModBlocks.java`, with custom chunk generator integration in `ChunkProviderGenerate.java`.
+- Blood Magic: Added Sacrificial Daggers (`ItemSacrificialDagger.java`), Blood Vials, Blood Altars (`BlockBloodAltar.java`), and Dark Crystals (`dark_crystal.java`).
+- Crystal Polishing: Added mechanics using Sandpaper (`ItemSandPaper.java`) and Raw Crystal Balls to craft polished Crystal Balls.
+
+## Changes & Balance Tweaks
+
+- Magic Crystal Drop Rates: Adjusted drop rates and integration for Magic Crystals across hostile mobs.
+- Wand & Equipment Balancing: Overhauled wand durability, charge consumption formulas, and melee combat burst stats.
+
+## Bug Fixes & Technical Improvements
+
+- NBT & ItemStack Serialization: Fixed NBT compound data persistence and deep-copy serialization within `ItemStack.java` using stream-based byte array cloning. Also fixed item stacking, tooltip rendering (`Gui_Inventory.java`), and durability preservation hooks.
+- Compatibility & Stability: Fixed Block and Item registration mappings, TileEntity special renderers (`TileEntityPedestalRenderer.java`, `TileEntityCableRenderer.java`), and null-pointer safety checks in `ItemBlock.java`.
+- Multiplayer & Singleplayer Fixes: Fixed player death hooks, score handling, and boots NBT synchronization (`for_boots.java`) for Minecraft Beta 1.7.3 multiplayer and singleplayer environments.
+
+## Previous Release: v1.7.3\_01-pre-2
+
+- Magic & Systems: Fire spell refactor (`mg_fire.java`) and custom XP and leveling system (`XPSystem.java`, `PlayerXpManager.java`) with in-game HUD tracking.
+- Balance & Fixes: Magic Crystal drop rates increased to 1 in 10 (10%), compilation fixes, and Minecraft Beta 1.7.3 death hook compatibility.
+
+## Previous Release: v1.7.3\_01-pre-1
+
+- Magic & Enchanting: Introduced the Magic Table, Pedestal, Magic Crafting Table, Magic Wand, and Mending/Silk Touch/Fire Aspect utilities.
+- Custom Items: Added Book and Quill, Bottle o' Enchanting, and Magic Crystals.
