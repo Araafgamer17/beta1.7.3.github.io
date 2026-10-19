@@ -1,11 +1,20 @@
 {
-  "latest_version": "b1.7.3_01-pre-3",
+  "latest_version": "b1.7.3_01-pre-4",
   "game_version": "b1.7.3",
   "versions": [
     {
+      "id": "b1.7.3_01-pre-4",
+      "name": "Beta 1.7.3_01-pre-4",
+      "release_type": "latest",
+      "downloads": {
+        "jar": "https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-4/Arcane.Expansion.Beta1.7.3_01-pre-4.jar",
+        "zip": "https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-4/Arcane.Expansion.Beta1.7.3_01-pre-4.zip"
+      }
+    },
+    {
       "id": "b1.7.3_01-pre-3",
       "name": "Beta 1.7.3_01-pre-3",
-      "release_type": "latest",
+      "release_type": "legacy",
       "downloads": {
         "jar": "https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-3/Arcane.Expansion.Beta1.7.3_01-pre-3.jar",
         "zip": "https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-3/Arcane.Expansion.Beta1.7.3_01-pre-3.zip"
@@ -25,8 +34,8 @@
       "name": "Beta 1.7.3_01-pre-1",
       "release_type": "legacy",
       "downloads": {
-        "jar": "https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01.jar",
-        "zip": "https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01.zip"
+        "jar": "https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01-pre-1.jar",
+        "zip": "https://github.com/Araafgamer17/beta1.7.3.github.io/releases/download/ArcaneExpansionBeta1.7.3_01-pre-1/Arcane.ExpansionBeta1.7.3_01-pre-1.zip"
       }
     }
   ]
